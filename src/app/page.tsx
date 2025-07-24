@@ -1,12 +1,16 @@
-import React from 'react'
- function page() {
+"use client";
+import Carousel from "@/components/homeComp/carousel";
+import Projects from "@/components/projects";
+
+function Page() {
   return (
     <div>
-      <div className='mt-[40px]'>
-        fdgsdfgsd
+      <div>
+          <Carousel />
+          <Projects />
       </div>
     </div>
-  )
+  );
 }
 
-export default page
+export default Page;
