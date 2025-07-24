@@ -1,21 +1,22 @@
 
+import { LAYOUT } from '@/app/utils/constants'
 import { createSlice } from '@reduxjs/toolkit' 
 
 
 export const navbarSlice = createSlice({
   name: 'navbarSlice',
   initialState:{
-    value:false
+    screenWidth:LAYOUT.WIDTH
   },
   reducers: {
-    change: (state) => { 
-      state.value =!state.value
-      console.log(state.value)
+    setScreenWidth: (state,action) => { 
+      state.screenWidth=action.payload
+      
     }, 
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { change } = navbarSlice.actions
+export const { setScreenWidth } = navbarSlice.actions
 
 export default navbarSlice.reducer

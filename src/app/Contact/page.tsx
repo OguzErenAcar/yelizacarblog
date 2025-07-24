@@ -3,8 +3,8 @@ import React from "react";
 function Page() {
   return (
     <div className="flex justify-center w-full">
-      <div className="flex justify-center gap-x-10 w-[80%]">
-        <div className="mt-4 flex flex-col bg-gray-900 rounded-lg p-4 w-1/2">
+      <div className="flex justify-between gap-x-10 w-[80%]">
+        <div className="mt-4 flex flex-col bg-gray-900 rounded-lg p-4 ">
           <h2 className="text-white font-bold text-2xl">
             AI Story Maker Dream Form
           </h2>
@@ -89,8 +89,8 @@ function Page() {
             ></textarea>
           </div>
         </div>
-        <div className="w-1/2 flex items-center mx-auto">
-          <img alt="" src="undraw_profile-data_xkr9.svg"></img>
+        <div className="  items-center mx-end hidden xl:flex">
+          <img width={500} alt="" src="undraw_profile-data_xkr9.svg"></img>
         </div>
       </div>
 

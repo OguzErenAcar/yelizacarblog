@@ -3,7 +3,7 @@ import navbarReducer from '../store/sliders/navbarSlider'
 
 export const store = configureStore({
   reducer: {
-      navbar: navbarReducer
+      navbarReducer
   },
 })
 
