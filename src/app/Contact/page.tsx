@@ -1,10 +1,12 @@
-import React from "react";
+'use client'
+import React, { useEffect } from "react";
 
 function Page() {
+ 
   return (
     <div className="flex justify-center w-full">
       <div className="flex justify-between gap-x-10 w-[80%]">
-        <div className="mt-4 flex flex-col bg-gray-900 rounded-lg p-4 ">
+        <div className="mt-4 flex flex-col bg-neutral-500 rounded-lg p-4 ">
           <h2 className="text-white font-bold text-2xl">
             AI Story Maker Dream Form
           </h2>
@@ -15,7 +17,7 @@ function Page() {
             </label>
             <input
               placeholder="Enter a title for your dream"
-              className="w-full bg-gray-800 rounded-md border-gray-700 text-white px-2 py-1"
+              className="w-full bg-neutral-300 rounded-md border-gray-700 text-black px-2 py-1"
               type="text"
             />
           </div>
@@ -26,7 +28,7 @@ function Page() {
             </label>
             <textarea
               placeholder="Describe your dream in detail"
-              className="w-full bg-gray-800 rounded-md border-gray-700 text-white px-2 py-1"
+              className="w-full bg-neutral-300 rounded-md border-gray-700 text-black  px-2 py-1"
               id="description"
             ></textarea>
           </div>
@@ -38,7 +40,7 @@ function Page() {
               </label>
               <input
                 placeholder="What emotions did you feel during your dream?"
-                className="w-full bg-gray-800 rounded-md border-gray-700 text-white px-2 py-1"
+                className="w-full bg-neutral-300 rounded-md border-gray-700 text-black  px-2 py-1"
                 id="emotions"
                 type="text"
               />
@@ -50,7 +52,7 @@ function Page() {
               </label>
               <input
                 placeholder="Did you see any symbols in your dream?"
-                className="w-full bg-gray-800 rounded-md border-gray-700 text-white px-2 py-1"
+                className="w-full bg-neutral-300 rounded-md border-gray-700 text-black  px-2 py-1"
                 id="symbols"
                 type="text"
               />
@@ -64,7 +66,7 @@ function Page() {
               </label>
               <input
                 placeholder="What themes do you think your dream might be about?"
-                className="w-full bg-gray-800 rounded-md border-gray-700 text-white px-2 py-1"
+                className="w-full bg-neutral-300rounded-md border-gray-700 text-white px-2 py-1"
                 id="themes"
                 type="text"
               />
@@ -73,7 +75,7 @@ function Page() {
 
           <div className="mt-4 flex justify-end">
             <button
-              className="bg-teal-500 text-white rounded-md px-4 py-1 hover:bg-teal-600 hover:text-white"
+              className="bg-black text-white rounded-md px-4 py-1 hover:bg-neutral-300  hover:text-white"
               id="generate-button"
               type="button"
             >
@@ -84,7 +86,7 @@ function Page() {
           <div className="mt-4">
             <textarea
               placeholder="Your AI-generated story will appear here"
-              className="w-full bg-gray-800 rounded-md border-gray-700 text-white px-2 py-1 h-48"
+              className="w-full bg-neutral-300 rounded-md border-gray-700 text-black px-2 py-1 h-48"
               id="story-output"
             ></textarea>
           </div>
@@ -93,7 +95,6 @@ function Page() {
           <img width={500} alt="" src="undraw_profile-data_xkr9.svg"></img>
         </div>
       </div>
-
     </div>
   );
 }

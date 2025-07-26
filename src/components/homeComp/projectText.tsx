@@ -1,8 +1,8 @@
 import React from 'react'
 
-function ProjectText({className}:{className?:string}) {
+function ProjectText({className ,data_aos}:{className?:string,data_aos?:string}) {
   return (
-          <div className={className} >
+          <div data-aos={data_aos} className={className} >
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
                   id lectus et sem pulvinar interdum ut et tortor. Aenean at

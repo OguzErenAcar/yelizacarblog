@@ -6,7 +6,10 @@ import Footer from "@/components/footer";
 import { Providers } from "@/store/storeProvider";
 import Link from "next/link";
 import ResizeProvider from "./utils/resizeProvider";
- 
+import 'aos/dist/aos.css'
+import "react-image-gallery/styles/css/image-gallery.css";
+import "yet-another-react-lightbox/styles.css";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -30,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Providers>
-        <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <body className={`relative ${geistSans.variable} ${geistMono.variable}`}>
           <Drawer>
             <Navbar />
               <ResizeProvider> 
