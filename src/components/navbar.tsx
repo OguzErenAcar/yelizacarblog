@@ -1,11 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 function Navbar() {
   const [isHovered, setIsHovered] = useState(false);
-  const absolute = usePathname()==='/';
-  
+  const absolute = usePathname() === "/";
+
   const drawerBtn = () => {
     document.getElementById("my-drawer")?.click();
   };
@@ -26,11 +27,15 @@ function Navbar() {
       ></div>
 
       {/* Navbar içeriği */}
-      <div className="relative flex items-center justify-between h-full px-5 z-0">
-        <span className="text-white font-semibold">Yeliz Acar</span>
+      <div className="relative flex items-center justify-between h-full  z-0">
+        <Link
+          href="/"
+        >
+          <img className="mt-1"  src="/LOGOO.png" width={170} alt="" />
+        </Link>
         <button
           onClick={drawerBtn}
-          className="text-white btn btn-square btn-ghost "
+          className="text-white btn btn-square btn-ghost me-4"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

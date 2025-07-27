@@ -1,33 +1,38 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { Project } from "../../app/utils/projectsModel";
+import { useRef } from "react";
+
 function Carousel() {
-  const [files, setFiles] = useState<string[]|null>([]);
+  const [project, setProject] = useState<Project | null>(null);
 
   useEffect(() => {
-    fetch("/api/uploads/p7")
+    fetch("projects.json")
       .then((res) => res.json())
       .then((data) => {
-        setFiles(data.files);
+        setProject(data.uploads.yeliz.projects[0]);
       });
   }, []);
   return (
     <div className="relative">
-      <div className="carousel w-full h-[calc(100vh)] ">
-          {files&&files.map((item,key)=>(
-        <div key={key} id={`item${key}`} className="carousel-item w-full">
-          <img
-            src={item}
-            className="w-full h-full object-cover object-center"
-          />
-        </div>
+      <div className="carousel w-full h-[calc(100vh)]  ">
+        {project &&
+          project.images.map((item, key) => (
+            <div key={key} id={`item${key}`} className="carousel-item w-full ">
+              <img
+                src={project.url + item}
+                className="w-full h-full object-cover object-center "
+              />
+              <div className="absolute bottom-0 left-0 h-1/5 w-full bg-gradient-to-t from-black/40"></div>
+            </div>
           ))}
       </div>
-      {files&&butonsGroup(files.length)}
+      {project && <ButonsGroup index={project.images.length} />}
     </div>
   );
 }
 
-function butonsGroup(index:number) {
+function ButonsGroup({ index }: { index: number }) {
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
     const target = e.currentTarget.getAttribute("href");
@@ -36,19 +41,41 @@ function butonsGroup(index:number) {
       block: "nearest",
     });
   };
-   const arr= Array(index).fill(null);
+  const arr = Array(index).fill(null);
+  const buttonsRef = useRef<HTMLDivElement>(null);
+ 
+
+  // useEffect(() => {
+  //   const buttons = buttonsRef.current;
+  //   if (buttons) {
+  //     const childs = buttons.childNodes;
+
+  //     let ind = 0;
+  //     const interval = setInterval(() => {
+  //       const btn = childs[ind] as HTMLElement;
+  //       btn.click();
+  //       ind += 1;
+  //       if (ind >= childs.length) ind = 0;
+  //     }, 2000);
+
+  //     return () => clearInterval(interval);
+  //   } 
+  // }, []);
+
   return (
-    <div className="flex w-full absolute bottom-3 justify-center gap-3 py-2">
-      {
-        arr.map((i,key)=>(
-          <a
-        key={key}
-        href={`#item${key}`}
-        onClick={handleClick}
-        className="btn rounded-full btn-xs"
-      ></a>
-        ))
-      }
+    <div
+      ref={buttonsRef}
+      id="carouselButtons"
+      className="flex w-full absolute bottom-3 justify-center gap-3 py-2 shadow-none"
+    >
+      {arr.map((i, key) => (
+        <a
+          key={key}
+          href={`#item${key}`}
+          onClick={handleClick}
+          className=" bg-white border-black rounded-full btn-xs h-[14px] w-[14px] opacity-50"
+        ></a>
+      ))}
     </div>
   );
 }

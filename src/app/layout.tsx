@@ -9,6 +9,13 @@ import ResizeProvider from "./utils/resizeProvider";
 import 'aos/dist/aos.css'
 import "react-image-gallery/styles/css/image-gallery.css";
 import "yet-another-react-lightbox/styles.css";
+import { Nunito_Sans } from 'next/font/google';
+
+const nunito = Nunito_Sans({
+  subsets: ['latin'],
+  weight: ['400'],       // sadece regular
+  display: 'swap',
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -66,7 +73,7 @@ function Drawer({ children }: { children?: React.ReactNode }) {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+        <ul className={`${nunito.className} text-lg menu bg-base-200 text-base-content min-h-full w-80 p-4`}>
         
           <li>
             <Link href="/">Home</Link>
