@@ -92,7 +92,7 @@ function Page() {
           </div>
         </div>
         <div className="  items-center mx-end hidden xl:flex">
-          <img width={500} alt="" src="undraw_profile-data_xkr9.svg"></img>
+          <img width={500} alt="" src="/fonts/undraw_profile-data_xkr9.svg"></img>
         </div>
       </div>
     </div>

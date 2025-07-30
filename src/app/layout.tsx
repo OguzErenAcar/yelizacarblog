@@ -6,15 +6,20 @@ import Footer from "@/components/footer";
 import { Providers } from "@/store/storeProvider";
 import Link from "next/link";
 import ResizeProvider from "./utils/resizeProvider";
-import 'aos/dist/aos.css'
+
+import "aos/dist/aos.css";
 import "react-image-gallery/styles/css/image-gallery.css";
 import "yet-another-react-lightbox/styles.css";
-import { Nunito_Sans } from 'next/font/google';
+import "react-loading-skeleton/dist/skeleton.css";
+
+import { Nunito_Sans } from "next/font/google";
+import LoadingGate from "./loadingGate";
+import { Suspense } from "react";
 
 const nunito = Nunito_Sans({
-  subsets: ['latin'],
-  weight: ['400'],       // sadece regular
-  display: 'swap',
+  subsets: ["latin"],
+  weight: ["400"], // sadece regular
+  display: "swap",
 });
 
 const geistSans = Geist({
@@ -40,12 +45,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Providers>
-        <body className={`relative ${geistSans.variable} ${geistMono.variable}`}>
+        <body
+          className={`relative ${geistSans.variable} ${geistMono.variable}`}
+        >
           <Drawer>
             <Navbar />
-              <ResizeProvider> 
-            {children}
-              </ResizeProvider>
+            <ResizeProvider>
+             <LoadingGate>
+              {children}
+             </LoadingGate>
+            </ResizeProvider>
             <Footer />
           </Drawer>
         </body>
@@ -65,7 +74,7 @@ function Drawer({ children }: { children?: React.ReactNode }) {
         >
           Open drawer
         </label>
-        {children} 
+        {children}
       </div>
       <div className="drawer-side">
         <label
@@ -73,19 +82,20 @@ function Drawer({ children }: { children?: React.ReactNode }) {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className={`${nunito.className} text-lg menu bg-base-200 text-base-content min-h-full w-80 p-4`}>
-        
+        <ul
+          className={`${nunito.className} text-lg menu bg-base-200 text-base-content min-h-full w-80 p-4`}
+        >
           <li>
             <Link href="/">Home</Link>
           </li>
           <li>
-            <Link href='/Projects'>Projects</Link>
+            <Link href="/Projects">Projects</Link>
           </li>
-           <li>
-            <Link href='/About'>About</Link>
+          <li>
+            <Link href="/About">About</Link>
           </li>
-           <li>
-            <Link href='/Contact'>Contact</Link>
+          <li>
+            <Link href="/Contact">Contact</Link>
           </li>
         </ul>
       </div>

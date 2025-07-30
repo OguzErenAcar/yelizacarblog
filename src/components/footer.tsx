@@ -4,8 +4,8 @@ import React from "react";
 function Footer() {
   return (
     <div>
-      <footer className="w-full mt-[50px] footer footer-horizontal footer-center bg-base-200 text-base-content rounded p-10">
-        <nav className="grid grid-flow-col gap-4">
+      <footer className="w-full h-50 footer footer-horizontal footer-center bg-base-200 text-base-content rounded p-10">
+        <nav className="grid grid-flow-col gap-4 ">
           <Link href="/About" className="link link-hover">
             About{" "}
           </Link>
@@ -16,9 +16,10 @@ function Footer() {
             Contact
           </Link>
         </nav>
-        <nav>
+
+        {/* <nav>
           <div className=" grid grid-flow-col gap-4">
-            {/* <Link
+           <Link
              href='https://www.instagram.com/yelizzacar'>
               <svg
                 width="24"
@@ -43,11 +44,10 @@ function Footer() {
                   fill="currentColor"
                 />
               </svg>
-            </Link> */}
+            </Link> 
           </div>
-        </nav>
+        </nav> */}
 
-        <aside></aside>
       </footer>
     </div>
   );

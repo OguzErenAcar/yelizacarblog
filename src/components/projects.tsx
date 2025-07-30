@@ -32,7 +32,7 @@ function Projects() {
     <div>
       <h1 className={`${nunito.className} text-center text-black text-5xl my-20`}>PROJECTS</h1>
       <div className="w-full flex justify-center">
-        <div className="md:w-[90%] ">
+        <div className="xl:max-w-[1280px] ">
           <div className="w-full justify-center hidden md:flex">
             <div className="min-h-[100vh]">
               {Projects?.map((item, key) => (

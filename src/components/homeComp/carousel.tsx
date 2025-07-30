@@ -10,7 +10,7 @@ function Carousel() {
     fetch("projects.json")
       .then((res) => res.json())
       .then((data) => {
-        setProject(data.uploads.yeliz.projects[0]);
+        setProject(data.uploads.yeliz.projects[6]);
       });
   }, []);
   return (
@@ -23,7 +23,7 @@ function Carousel() {
                 src={project.url + item}
                 className="w-full h-full object-cover object-center "
               />
-              <div className="absolute bottom-0 left-0 h-1/5 w-full bg-gradient-to-t from-black/40"></div>
+              <div className="absolute bottom-0 left-0 h-1/7 w-full bg-gradient-to-t from-black/40"></div>
             </div>
           ))}
       </div>

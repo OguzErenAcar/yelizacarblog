@@ -2,6 +2,13 @@
 import React, { useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { Edu_QLD_Beginner } from "next/font/google";
+
+const Lovers = Edu_QLD_Beginner({
+  subsets: ["latin"],
+  weight: ["400"], // sadece regular
+  display: "swap",
+});
 
 function Navbar() {
   const [isHovered, setIsHovered] = useState(false);
@@ -28,11 +35,13 @@ function Navbar() {
 
       {/* Navbar içeriği */}
       <div className="relative flex items-center justify-between h-full  z-0">
-        <Link
-          href="/"
-        >
-          <img className="mt-1"  src="/LOGOO.png" width={170} alt="" />
-        </Link>
+        <div className=" ms-5">
+          <Link className="flex gap-x-2" href="/">
+            <img className="" src="/LOGOO.png" width={40} alt="" />
+          <h1 className={`${Lovers.className} text-2xl h-[30px] my-auto`}>Yeliz Acar</h1>
+          </Link>
+        </div>
+
         <button
           onClick={drawerBtn}
           className="text-white btn btn-square btn-ghost me-4"

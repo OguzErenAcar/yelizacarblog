@@ -7,7 +7,6 @@ import { Nunito_Sans } from "next/font/google";
 import "toastify-js/src/toastify.css";
 import Toastify from "toastify-js";
 
-
 const nunito = Nunito_Sans({
   subsets: ["latin"],
   weight: ["700"], // sadece regular
@@ -41,7 +40,7 @@ function Page() {
   const copyLink = (str: string) => {
     navigator.clipboard.writeText(str).then(() => {
       Toastify({
-        text: str +' Copied',
+        text: str + " Copied",
         duration: 3000,
         newWindow: true,
         close: true,
@@ -55,24 +54,24 @@ function Page() {
     });
   };
   const downloadCV = () => {
-  const link = document.createElement("a");
-  link.href = "/YelizAcar-CV.pdf"; // dosyanın yolu
-  link.download = "YelizAcar-CV.pdf"; // kullanıcıya nasıl görünecek
-  link.click();
-     Toastify({
-        text: 'Download CV',
-        duration: 3000,
-        newWindow: true,
-        close: true,
-        gravity: "bottom", // `top` or `bottom`
-        position: "left", // `left`, `center` or `right`
-        stopOnFocus: true, // Prevents dismissing of toast on hover
-        style: {
-          background: "black",
-        },
-      }).showToast();
+    const link = document.createElement("a");
+    link.href = "/YelizAcar-CV.pdf"; // dosyanın yolu
+    link.download = "YelizAcar-CV.pdf"; // kullanıcıya nasıl görünecek
+    link.click();
+    Toastify({
+      text: "Download CV",
+      duration: 3000,
+      newWindow: true,
+      close: true,
+      gravity: "bottom", // `top` or `bottom`
+      position: "left", // `left`, `center` or `right`
+      stopOnFocus: true, // Prevents dismissing of toast on hover
+      style: {
+        background: "black",
+      },
+    }).showToast();
   };
- 
+
   return (
     <div>
       <div className="flex justify-center mt-10 ">
@@ -95,6 +94,7 @@ function Page() {
               </p>
               <div className="w-full flex justify-start gap-x-15 mt-10">
                 <img
+                  loading="lazy"
                   onClick={downloadCV}
                   className="cursor-pointer"
                   src="/fonts/docs_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg"
@@ -104,7 +104,7 @@ function Page() {
                 />
                 <img
                   onClick={() => {
-                    copyLink("0551 160 14 94");
+                    copyLink("yelzacr4141@.gmail.com");
                   }}
                   className="cursor-pointer"
                   src="/fonts/mail_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg"
@@ -114,7 +114,7 @@ function Page() {
                 />
                 <img
                   onClick={() => {
-                    copyLink("yelzacr4141@.gmail.com");
+                    copyLink("0551 160 14 94");
                   }}
                   className="cursor-pointer"
                   src="/fonts/phone_in_talk_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg"
@@ -125,6 +125,12 @@ function Page() {
               </div>
             </div>
           </div>
+          {/* <div className="p-8 space-y-6">
+            <div className="animate-pulse space-y-4 p-4  rounded-lg shadow w-full max-w-md">
+              <div className="h-190 bg-gray-300 rounded w-[468px]"></div>
+            </div>
+          </div> */}
+
           <div className="">
             <Image
               src='/photo.jpeg'
@@ -141,13 +147,16 @@ function Page() {
   );
 }
 
-function TimeLine() { 
+function TimeLine() {
   const arr = [
-  { title: "ŞANTİYE STAJI", desc: "ARTSAM İNŞAAT 2024-AĞUSTOS" },
-  { title: "OFİS STAJI", desc: "EMİRCAN İNŞAAT 2024-TEMMUZ" },
-  { title: "OFİS STAJI", desc: "ENGİN KÜÇÜK MİMARLIK 2023-Temmuz-Ağustos" },
-  { title: "ŞANTİYE STAJI", desc: "BASİT İNŞAAT/ Zafer Şantiyesi 2022-Temmuz-Ağustos" },
-];
+    { title: "ŞANTİYE STAJI", desc: "ARTSAM İNŞAAT 2024-AĞUSTOS" },
+    { title: "OFİS STAJI", desc: "EMİRCAN İNŞAAT 2024-TEMMUZ" },
+    { title: "OFİS STAJI", desc: "ENGİN KÜÇÜK MİMARLIK 2023-Temmuz-Ağustos" },
+    {
+      title: "ŞANTİYE STAJI",
+      desc: "BASİT İNŞAAT/ Zafer Şantiyesi 2022-Temmuz-Ağustos",
+    },
+  ];
   useEffect(() => {
     arr.forEach((el, i) => {
       animate(".timelineText" + i, {
