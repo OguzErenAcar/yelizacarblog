@@ -4,7 +4,7 @@ import { NextRequest } from 'next/server';
 
 export async function GET( 
 ) {
-  const dirpath =`/public/uploads/yeliz/projects/`
+  const dirpath =`/public/uploads/user/projects/`
   const uploadsPath = path.join(process.cwd(), dirpath);
 
   try {

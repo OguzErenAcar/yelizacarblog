@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Project } from "../app/utils/projectsModel";
 import Aos from "aos";
 import { Nunito_Sans } from 'next/font/google';
+import { usePathname } from "next/navigation";
 
 const nunito = Nunito_Sans({
   subsets: ['latin'],
@@ -15,16 +16,18 @@ const nunito = Nunito_Sans({
 
 function Projects() {
   const [Projects, setProjects] = useState<Project[] | null>([]);
+  const pathname=usePathname();
+
 
   useEffect(() => {
     Aos.init({
       duration: 800,
       once: false,
     });
-    fetch("projects.json")
+    fetch("/projects.json")
       .then((res) => res.json())
       .then((data) => {
-        setProjects(data.uploads.yeliz.projects);
+        setProjects(data.uploads.user.projects);
       });
   }, []);
 
@@ -39,9 +42,9 @@ function Projects() {
                 <div key={key}>
                   {key % 2 == 0 && (
                     <div className="flex justify-start mb-20">
-                      <Link href={`/Projects/${key}`}>
+                      <Link href={`${pathname}/Projects/${key}`}>
                         <ProjectCard
-                          src={item.url + item.images[0]}
+                          src={'/'+item.url + item.images[0]}
                           innerWidth={300}
                           className="w-[430px] flex justify-center transition duration-500 ease-in-out transform hover:scale-110"
                         />
@@ -63,9 +66,9 @@ function Projects() {
                         data_aos="fade-right"
                         className="my-auto w-[390px] select-none text-end"
                       />
-                      <Link href={`/Projects/${key}`}>
+                      <Link href={`${pathname}/Projects/${key}`}>
                         <ProjectCard
-                          src={item.url + item.images[0]}
+                          src={'/'+item.url + item.images[0]}
                           innerWidth={300}
                           className="w-[430px] flex justify-center transition duration-500 ease-in-out transform hover:scale-110"
                         />
@@ -82,9 +85,9 @@ function Projects() {
               className="flex flex-col items-center  gap-y-8 md:hidden "
             >
               <>
-                <Link href={`/Projects/${key}`}>
+                <Link href={`${pathname}/Projects/${key}`}>
                   <ProjectCard
-                    src={item.url + item.images[0]}
+                    src={'/'+item.url + item.images[0]}
                     innerWidth={300}
                     className="w-[350px] flex justify-center transition duration-500 ease-in-out transform hover:scale-110"
                   />

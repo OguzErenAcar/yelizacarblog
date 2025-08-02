@@ -10,7 +10,7 @@ function Carousel() {
     fetch("projects.json")
       .then((res) => res.json())
       .then((data) => {
-        setProject(data.uploads.yeliz.projects[6]);
+        setProject(data.uploads.user.projects[5]);
       });
   }, []);
   return (

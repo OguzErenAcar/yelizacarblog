@@ -1,30 +1,11 @@
-"use client";
-import Carousel from "@/components/homeComp/carousel";
-import Projects from "@/components/projects";
-import AOS from 'aos';
-import { useEffect } from "react";
-import dynamic from "next/dynamic"
-import LoadingGate from "./loadingGate"
+'use client'
+import { useRouter } from 'next/navigation'
+import React, { useEffect } from 'react'
 
 
 function Page() {
-
-
-
-  useEffect(() => {
-    AOS.init({
-      duration: 800,
-      once: false,
-    });
-  }, []);
-  return (
-    <div>
-      <div>
-          <Carousel />
-          <Projects />
-      </div>
-    </div>
-  );
+    const router=useRouter();
+    router.push('/Dashboard/auth/sign-in'); 
 }
 
-export default Page;
+export default Page

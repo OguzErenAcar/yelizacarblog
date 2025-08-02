@@ -21,7 +21,7 @@ function  DetailsProject({id}:{id:string}) {
       fetch("/projects.json")
         .then((res) => res.json())
         .then((data) => {
-         const projects=data.uploads.yeliz.projects as Project[];
+         const projects=data.uploads.user.projects as Project[];
          const proj=projects.filter((x,i)=>i.toString()==id)
          console.log(proj[0].url+proj[0].images[0])
          setProject(proj[0]);
