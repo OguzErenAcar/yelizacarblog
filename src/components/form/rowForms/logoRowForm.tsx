@@ -20,34 +20,52 @@ export default function LogoForm({
   updateData,
   deleteRow,
 }: {
-  formData: LogoRowObj|null;
+  formData: LogoRowObj | null;
   addformBtn: boolean;
   updformBtn: boolean;
   delformBtn: boolean;
-  addData: (data: LogoFormValues) => void;
+  addData: (data: LogoRowObj) => void;
   closeForm?: () => void;
-  updateData: (data: LogoFormValues) => void;
+  updateData: (data: LogoRowObj) => void;
   deleteRow: (id: number) => void;
 }) {
   const formik = useFormik({
-    initialValues: { url: "", height: "", width: "" },
+    initialValues: {
+        id: formData?.id ?? -1,
+        url: formData?.url || "",
+        height: formData?.height || "",
+        width: formData?.width || "",
+        userId: formData?.id || -1,
+      },
     onSubmit: () => {},
     validationSchema: Yup.object({}),
   });
 
-  useEffect(() => {
-    formik.resetForm({
-      values: {
-        url: formData?.url||"",
-        height: formData?.height||"",
-        width: formData?.width||"",
-      },
-    });
-    
-  }, [formData]);
+  useEffect(() => { 
+    console.log("fv",formik.values.id)
+  //   formik.resetForm({
+  //     values: {
+  //       id: formData?.id || -1,
+  //       url: formData?.url || "",
+  //       height: formData?.height || "",
+  //       width: formData?.width || "",
+  //       userId: formData?.id || -1,
+  //     },
+  //   }
+  // );
+  }, []);
 
-  const path=usePathname()
-  const images=["/images/cards/card-01.jpg","/images/cards/card-01.jpg","/images/cards/card-01.jpg","/images/cards/card-01.jpg","/images/cards/card-01.jpg","/images/cards/card-01.jpg","/images/cards/card-01.jpg","/images/cards/card-01.jpg","/images/cards/card-01.jpg"];
+  const images = [
+    "/images/cards/card-01.jpg",
+    "/images/cards/card-01.jpg",
+    "/images/cards/card-01.jpg",
+    "/images/cards/card-01.jpg",
+    "/images/cards/card-01.jpg",
+    "/images/cards/card-01.jpg",
+    "/images/cards/card-01.jpg",
+    "/images/cards/card-01.jpg",
+    "/images/cards/card-01.jpg",
+  ];
 
   return (
     <ComponentCard title="Row" className="pb-10 relative">
@@ -58,41 +76,44 @@ export default function LogoForm({
           color="oklch(57.7% 0.245 27.325)"
         />
       </div>
-      
+
       <div className="h-150 flex w-full justify-center">
         <div className="flex flex-col gap-10 md:w-[80%] w-full ">
-        <ImagesGroup tablePath={`/Dashboard/tables/ProjectImagesTable/projectId=${formData?.id}`} imageUrls={[]}  /> 
+          <ImagesGroup
+            tablePath={`/Dashboard/tables/ProjectImagesTable/projectId=${formData?.id}`}
+            imageUrls={[]}
+          />
 
-      <div>
-        <Label htmlFor="url">Url</Label>
-        <Input
-          onChange={formik.handleChange}
-          value={formik.values.url}
-          name="url"
-          type="text"
-          id="input"
-        />
-      </div>
-      <div>
-        <Label htmlFor="height">Height</Label>
-        <Input
-          onChange={formik.handleChange}
-          value={formik.values.height}
-          name="height"
-          type="text"
-          id="input"
-        />
-      </div>
-      <div>
-        <Label htmlFor="width">Width</Label>
-        <Input
-          onChange={formik.handleChange}
-          value={formik.values.width}
-          name="width"
-          type="text"
-          id="input"
-        />
-      </div>
+          <div>
+            <Label htmlFor="url">Url</Label>
+            <Input
+              onChange={formik.handleChange}
+              value={formik.values.url}
+              name="url"
+              type="text"
+              id="input"
+            />
+          </div>
+          <div>
+            <Label htmlFor="height">Height</Label>
+            <Input
+              onChange={formik.handleChange}
+              value={formik.values.height}
+              name="height"
+              type="text"
+              id="input"
+            />
+          </div>
+          <div>
+            <Label htmlFor="width">Width</Label>
+            <Input
+              onChange={formik.handleChange}
+              value={formik.values.width}
+              name="width"
+              type="text"
+              id="input"
+            />
+          </div>
         </div>
       </div>
       <div className="absolute bottom-4 right-4">

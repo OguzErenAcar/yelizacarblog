@@ -20,44 +20,43 @@ export type LogoFormValues = {
 
 export default function LogoTable() {
   const tableViewer = useRef<HTMLDivElement>(null);
-  const initialForm = {
-    url: "",
-    height: "",
-    width: "",
-  };
-  const tableLogic = TableLogic<LogoRowObj, LogoFormValues>(tableData,initialForm);
+  const tableLogic = TableLogic<LogoRowObj>(tableData);
 
   useEffect(() => {}, [tableLogic.refresh]);
 
   return (
     <div>
-     { tableLogic.formComp&&<div>
-        <LogoForm
-          addformBtn={tableLogic.addformBtn}
-          updformBtn={tableLogic.updformBtn}
-          delformBtn={tableLogic.delformBtn}
-          addData={tableLogic.addData}
-          formData={tableLogic.formData}
-          updateData={tableLogic.updateData}
-          deleteRow={tableLogic.deleteRow}
-          closeForm={tableLogic.closeForm}
-        />
-      </div>}
-    {  !tableLogic.formComp&& <div>
-        <Tools
-          forceRefresh={tableLogic.forceRefresh}
-          addRow={tableLogic.addRow}
-          changeOrder={tableLogic.changeOrder}
-          deleteAllRow={tableLogic.deleteAllRow}
-        />
-        <div ref={tableViewer}>
-          <ViewTable
-            rows={tableLogic.rows}
-            updateRow={tableLogic.updateRow}
+      {tableLogic.formComp && (
+        <div>
+          <LogoForm
+            addformBtn={tableLogic.addformBtn}
+            updformBtn={tableLogic.updformBtn}
+            delformBtn={tableLogic.delformBtn}
+            addData={tableLogic.addData}
+            formData={tableLogic.formData}
+            updateData={tableLogic.updateData}
             deleteRow={tableLogic.deleteRow}
+            closeForm={tableLogic.closeForm}
           />
         </div>
-      </div>}
+      )}
+      {!tableLogic.formComp && (
+        <div>
+          <Tools
+            forceRefresh={tableLogic.forceRefresh}
+            addRow={tableLogic.addRow}
+            changeOrder={tableLogic.changeOrder}
+            deleteAllRow={tableLogic.deleteAllRow}
+          />
+          <div ref={tableViewer}>
+            <ViewTable
+              rows={tableLogic.rows}
+              updateRow={tableLogic.updateRow}
+              deleteRow={tableLogic.deleteRow}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -71,6 +70,10 @@ function ViewTable({
   updateRow: (id: number) => void;
   deleteRow: (id: number) => void;
 }) {
+  const copyRow=[...rows];
+
+
+
   return (
     <div className="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-white/[0.05] dark:bg-white/[0.03]">
       <div className="max-w-full overflow-x-auto">
