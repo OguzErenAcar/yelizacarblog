@@ -124,7 +124,7 @@ function ViewTable({
 
           {/* Table Body */}
           <TableBody className="divide-y divide-gray-100 dark:divide-white/[0.05]">
-            {tableData.map((data) => (
+            {rows.map((data) => (
               <TableRow key={data.id}>
                 <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
                   {data.id}
@@ -143,15 +143,15 @@ function ViewTable({
                 </TableCell>
                 <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
                   <button
-                    className="ms-2 bg-warning-500 hover:bg-warning-700  text-white  h-[30px] w-[70px] rounded-full"
+                    className=" bg-warning-500 hover:bg-warning-700  text-white  h-[30px] w-[70px] rounded-full"
                     onClick={() => updateRow(data.id)}
                   >
                     Update
                   </button>
                 </TableCell>
-                <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                <TableCell className=" px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
                   <button
-                    className="ms-2 bg-red-500 hover:bg-red-700  text-white  h-[30px] w-[70px] rounded-full"
+                    className="bg-red-500 hover:bg-red-700  text-white  h-[30px] w-[70px] rounded-full"
                     onClick={() => deleteRow(data.id)}
                   >
                     Delete{" "}

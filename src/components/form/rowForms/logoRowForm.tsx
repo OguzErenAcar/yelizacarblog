@@ -6,6 +6,9 @@ import Input from "../input/InputField";
 import { Formik, Field, Form, useFormik } from "formik";
 import * as Yup from "yup";
 import { LogoFormValues } from "@/components/tables/LogoTable";
+import FileInput from "../input/FileInput";
+import ImagesGroup from "../form-elements/ImagesGroup";
+import { usePathname } from "next/navigation";
 
 export default function LogoForm({
   formData,
@@ -43,6 +46,9 @@ export default function LogoForm({
     
   }, [formData]);
 
+  const path=usePathname()
+  const images=["/images/cards/card-01.jpg","/images/cards/card-01.jpg","/images/cards/card-01.jpg","/images/cards/card-01.jpg","/images/cards/card-01.jpg","/images/cards/card-01.jpg","/images/cards/card-01.jpg","/images/cards/card-01.jpg","/images/cards/card-01.jpg"];
+
   return (
     <ComponentCard title="Row" className="pb-10 relative">
       <div className="absolute top-4 right-4">
@@ -52,6 +58,11 @@ export default function LogoForm({
           color="oklch(57.7% 0.245 27.325)"
         />
       </div>
+      
+      <div className="h-150 flex w-full justify-center">
+        <div className="flex flex-col gap-10 md:w-[80%] w-full ">
+        <ImagesGroup tablePath={`/Dashboard/tables/ProjectImagesTable/projectId=${formData?.id}`} imageUrls={[]}  /> 
+
       <div>
         <Label htmlFor="url">Url</Label>
         <Input
@@ -81,6 +92,8 @@ export default function LogoForm({
           type="text"
           id="input"
         />
+      </div>
+        </div>
       </div>
       <div className="absolute bottom-4 right-4">
         {addformBtn && (

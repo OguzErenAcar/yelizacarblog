@@ -15,14 +15,15 @@ export function TableLogic<T,U>(initialData: T[],formType:U) {
     setaddformBtn(true)
     setFormComp(true)
     setFormData(null);
- 
   };
+
   const deleteAllRow = () => { 
     
   };
 
   const deleteRow = (index: number) =>
     setRows((prev) => prev.filter((_, i) => i !== index));
+    
 
   const updateRow = (id: number) => {
     setFormComp(true);
@@ -39,7 +40,8 @@ export function TableLogic<T,U>(initialData: T[],formType:U) {
      
   };
   const updateData = (data: typeof formType) => {
-    console.log(data)
+    
+    
   };
 
   const closeForm = () => {
