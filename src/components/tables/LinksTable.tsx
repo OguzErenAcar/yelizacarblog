@@ -9,81 +9,11 @@ import {
   TableHeader,
   TableRow,
 } from "../ui/table";
-import { Button } from "../ui/myUI/myui";
-import ComponentCard from "../common/ComponentCard";
-import Label from "../form/Label";
-import Input from "../form/input/InputField";
 
 function LinksTable() {
-  const [editComp, setEditComp] = useState(false);
-  const [id, setId] = useState(-1);
-
-  const deleteRow = (id: number) => {
-
-  };
-  const updateRow = (id: number) => {
-    setId(id);
-    setEditComp(true);
-  };
-
-  const updateData = () => {
-
-  };
-
-  
-  const removeEditRow = () => {
-    setEditComp(false);
-  };
-
-
-  function EditRow(): React.JSX.Element {
-    return (
-      <ComponentCard title="Row" className="pb-10 relative">
-        <div className="absolute top-4 right-4">
-          <Button
-            onClick={removeEditRow}
-            text="x"
-            color="oklch(57.7% 0.245 27.325)"
-          />
-        </div>
-        <div>
-          <Label htmlFor="input">Url</Label>
-          <Input type="text" id="input" />
-        </div>
-        <div>
-          <Label htmlFor="input">Height</Label>
-          <Input type="text" id="input" />
-        </div>
-        <div>
-          <Label htmlFor="input">Width</Label>
-          <Input type="text" id="input" />
-        </div>
-        <div className="absolute bottom-4 right-4">
-          <button
-            onClick={updateData}
-            className=" bg-green-500 hover:bg-green-700  text-white  h-[30px] w-[70px] rounded-full"
-          >
-            Update
-          </button>
-          <button
-            className="ms-2 bg-red-500 hover:bg-red-700  text-white  h-[30px] w-[70px] rounded-full"
-          >
-            Delete
-          </button>
-        </div>
-      </ComponentCard>
-    );
-  }
-
   return (
     <div>
-      <div style={{ display: editComp ? "block" : "none" }}>
-        <EditRow />
-      </div>
-      <div
-        style={{ display: !editComp ? "block" : "none" }}
-        className="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-white/[0.05] dark:bg-white/[0.03]"
-      >
+      <div className="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-white/[0.05] dark:bg-white/[0.03]">
         <div className="max-w-full overflow-x-auto">
           <Table>
             {/* Table Header */}
@@ -119,7 +49,7 @@ function LinksTable() {
                 >
                   UserId
                 </TableCell>
-                <TableCell
+                {/* <TableCell
                   isHeader
                   className="px-5 py-3 mx- font-medium text-gray-500 mx-auto text-theme-xs dark:text-gray-400"
                 >
@@ -130,11 +60,10 @@ function LinksTable() {
                   className="px-5 py-3 font-medium text-gray-500 mx-auto text-theme-xs dark:text-gray-400"
                 >
                   Delete
-                </TableCell>
+                </TableCell> */}
               </TableRow>
             </TableHeader>
 
-            {/* Table Body */}
             <TableBody className="divide-y divide-gray-100 dark:divide-white/[0.05]">
               {tableData.map((data) => (
                 <TableRow key={data.id}>
@@ -153,22 +82,20 @@ function LinksTable() {
                   <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
                     {data.userId}
                   </TableCell>
-                  <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                  {/* <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
                     <button
                       className="ms-2 bg-warning-500 hover:bg-warning-700  text-white  h-[30px] w-[70px] rounded-full"
-                      onClick={() => updateRow(data.id)}
-                    >
+                      onClick={() => {}}>
                       Edit
                     </button>
                   </TableCell>
                   <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
                     <button
                       className="ms-2 bg-red-500 hover:bg-red-700  text-white  h-[30px] w-[70px] rounded-full"
-                      onClick={() => deleteRow(data.id)}
-                    >
+                      onClick={() => {}}>
                       Delete{" "}
                     </button>
-                  </TableCell>
+                  </TableCell> */}
                 </TableRow>
               ))}
             </TableBody>

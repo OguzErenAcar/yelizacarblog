@@ -12,7 +12,7 @@ function Page() {
   if (!table || !(table in Tables)) {
     return <div>Not Found</div>;
   }
-  //her tablo kendi fetch ini atıcak isim ile 
+  
   return (
     <div>
       <div className="flex flex-col min-h-screen gap-20">{Tables[table]}</div>;

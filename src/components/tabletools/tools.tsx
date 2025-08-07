@@ -1,9 +1,4 @@
 import React from "react";
-import { Button } from "../ui/myUI/myui";
-import ComponentCard from "../common/ComponentCard";
-import Label from "../form/Label";
-import Input from "../form/input/InputField";
-import { TableLogic } from "@/hooks/TableLogic";
 
 type ToolsProps = {
   forceRefresh?:() => void
@@ -49,7 +44,7 @@ function Tools({
         >
           Delete All Row
         </button>
-        <button
+        {/* <button
           className=" right-35  bg-neutral-200 hover:bg-neutral-200  text-white  h-[30px] w-[120px] rounded-lg"
           onClick={changeOrder}
         >
@@ -61,7 +56,7 @@ function Tools({
           className=" right-0 bg-neutral-200 hover:bg-neutral-200 text-white  h-[30px] w-[120px] rounded-lg"
         >
           Filter
-        </button>
+        </button> */}
       </div>
     </div>
   );

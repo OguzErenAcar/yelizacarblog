@@ -1,9 +1,9 @@
 "use client";
 import tableData from "@/views/tableViews/tableDataLogo";
-import React, { useEffect, useMemo, useReducer, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import LogoForm from "../form/rowForms/logoRowForm";
 import { TableLogic } from "@/hooks/TableLogic";
-import Tools from "../toolbar/tools";
+import Tools from "../tabletools/tools";
 import {
   Table,
   TableBody,
