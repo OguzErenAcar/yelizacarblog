@@ -6,13 +6,13 @@ function Footer() {
     <div>
       <footer className="w-full h-50 footer footer-horizontal footer-center bg-base-200 text-base-content rounded p-10">
         <nav className="grid grid-flow-col gap-4 ">
-          <Link href="/About" className="link link-hover">
+          <Link aria-label="About" href="/About" className="link link-hover">
             About{" "}
           </Link>
-          <Link href="/Projects" className="link link-hover">
+          <Link aria-label="Projects" href="/Projects" className="link link-hover">
             Projects
           </Link>
-          <Link href="/Contact" className="link link-hover">
+          <Link aria-label="Contact" href="/Contact" className="link link-hover">
             Contact
           </Link>
         </nav>

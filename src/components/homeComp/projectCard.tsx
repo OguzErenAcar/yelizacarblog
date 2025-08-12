@@ -24,7 +24,7 @@ function ProjectCard({
             loading="lazy"
             className="rounded-md"
             src={src}
-            alt="Shoes"
+            alt="project Image"
           />
           {/* <div className="absolute bottom-0 left-0 h-1/4 w-full bg-gradient-to-t from-black/100"></div> */}
         </figure>

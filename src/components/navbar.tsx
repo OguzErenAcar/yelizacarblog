@@ -36,13 +36,16 @@ function Navbar() {
       {/* Navbar içeriği */}
       <div className="relative flex items-center justify-between h-full  z-0">
         <div className=" ms-5">
-          <Link className="flex gap-x-2" href="/">
+          <Link
+           aria-label="Logo"
+           className="flex gap-x-2" href="/">
             <img className="" src="/LOGOO.png" width={40} alt="" />
           <h1 className={`${Lovers.className} text-2xl h-[30px] my-auto`}>Yeliz Acar</h1>
           </Link>
         </div>
 
         <button
+         aria-label="navbutton"
           onClick={drawerBtn}
           className="text-white btn btn-square btn-ghost me-4"
         >

@@ -1,4 +1,4 @@
-'use client';
+ 
 import Head from 'next/head';
 import JsonLd from './JsonLd';
 
@@ -33,8 +33,8 @@ export default function Seo({ title, description, path = '' }: SeoProps) {
         <meta property="og:description" content={desc} />
         <meta property="og:url" content={url} />
         <meta property="og:site_name" content={siteName} />
-      </Head>
       <JsonLd data={jsonLd} />
+      </Head>
     </>
   );
 }

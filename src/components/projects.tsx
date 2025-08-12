@@ -50,7 +50,9 @@ function Projects() {
                 <div key={key}>
                   {key % 2 == 0 && (
                     <div className="flex justify-start mb-20">
-                      <Link href={getPath(key)}>
+                      <Link 
+                      aria-label="project"
+                      href={getPath(key)}>
                         <ProjectCard
                           src={"/" + item.url + item.images[0]}
                           innerWidth={300}
@@ -74,7 +76,9 @@ function Projects() {
                         data_aos="fade-right"
                         className="my-auto w-[390px] select-none text-end"
                       />
-                      <Link href={getPath(key)}>
+                      <Link 
+                      aria-label="project"
+                      href={getPath(key)}>
                         <ProjectCard
                           src={"/" + item.url + item.images[0]}
                           innerWidth={300}
@@ -93,7 +97,9 @@ function Projects() {
               className="flex flex-col items-center  gap-y-8 md:hidden "
             >
               <>
-                <Link href={getPath(key)}>
+                <Link
+                aria-label="project"
+                 href={getPath(key)}>
                   <ProjectCard
                     src={"/" + item.url + item.images[0]}
                     innerWidth={300}

@@ -2,6 +2,7 @@ import React from "react";
 import "./global.css";
 import type { Metadata } from "next";
 import JsonLd from "./utils/JsonLd";
+import Head from "next/head";
 
 const siteName = process.env.NEXT_PUBLIC_SITE_NAME || "Architect Yeliz Acar Blog";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "";
@@ -56,8 +57,10 @@ export default function RootLayout({
 
   return (
     <html lang="tr">
-      <JsonLd data={website} />
+     <Head>
+       <JsonLd data={website} />
       <JsonLd data={organization} />
+     </Head>
       <body>{children}</body>
     </html>
   );

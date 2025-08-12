@@ -70,6 +70,7 @@ export default function Blog({
 function Drawer({ children }: { children?: React.ReactNode }) {
   return (
     <div className={"drawer drawer-end "}>
+     <label htmlFor="my-drawer"/>
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
         <label
@@ -90,16 +91,16 @@ function Drawer({ children }: { children?: React.ReactNode }) {
           className={`${nunito.className} text-lg menu bg-base-200 text-base-content min-h-full w-80 p-4`}
         >
           <li>
-            <Link href="/Blog">Home</Link>
+            <Link aria-label="Blog" href="/Blog">Home</Link>
           </li>
           <li>
-            <Link href="/Blog/Projects">Projects</Link>
+            <Link aria-label="Projects" href="/Blog/Projects">Projects</Link>
           </li>
           <li>
-            <Link href="/Blog/About">About</Link>
+            <Link aria-label="About" href="/Blog/About">About</Link>
           </li>
           <li>
-            <Link href="/Blog/Contact">Contact</Link>
+            <Link aria-label="Contact" href="/Blog/Contact">Contact</Link>
           </li>
         </ul>
       </div>

@@ -1,4 +1,4 @@
-import Link from "next/link";
+
 import React, { useEffect, useState } from "react";
 import { Project } from "../../app/utils/projectsModel";
 import { useRef } from "react";
@@ -22,6 +22,7 @@ function Carousel() {
               <img
                 src={project.url + item}
                 className="w-full h-full object-cover object-center "
+                alt="Project Image"
               />
               <div className="absolute bottom-0 left-0 h-1/7 w-full bg-gradient-to-t from-black/40"></div>
             </div>
@@ -70,6 +71,7 @@ function ButonsGroup({ index }: { index: number }) {
     >
       {arr.map((i, key) => (
         <a
+          aria-label="carausel-button"
           key={key}
           href={`#item${key}`}
           onClick={handleClick}

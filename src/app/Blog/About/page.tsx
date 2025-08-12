@@ -138,7 +138,7 @@ function Page() {
               src='/photo.jpeg'
               width={468}
               height={0}
-              alt=""
+              alt="Yeliz Acar image"
               className="block mx-auto"
             />
           </div>
