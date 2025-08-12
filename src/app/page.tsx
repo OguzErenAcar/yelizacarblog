@@ -1,11 +1,12 @@
-'use client'
-import { useRouter } from 'next/navigation'
-import React, { useEffect } from 'react'
+import { redirect } from 'next/navigation';
+import type { Metadata } from 'next';
 
+const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'Architect Yeliz Acar Blog';
 
-function Page() {
-    const router=useRouter();
-    router.push('/Blog'); 
+export const metadata: Metadata = {
+  title: siteName,
+};
+
+export default function Page() {
+  redirect('/Blog');
 }
-
-export default Page

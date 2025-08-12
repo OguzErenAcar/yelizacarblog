@@ -1,5 +1,6 @@
+"use client";
 import Image from "next/image";
-import React, { useEffect, useState } from "react"; 
+import React, { useEffect, useState } from "react";
 import Lightbox, { SlideImage } from "yet-another-react-lightbox";
 import { Project } from '../../../utils/projectsModel';
 import { Nunito_Sans } from 'next/font/google';

@@ -6,6 +6,7 @@ import { animate, onScroll } from "animejs";
 import { Nunito_Sans } from "next/font/google";
 import "toastify-js/src/toastify.css";
 import Toastify from "toastify-js";
+import Seo from "../../utils/Seo";
 
 const nunito = Nunito_Sans({
   subsets: ["latin"],
@@ -73,7 +74,8 @@ function Page() {
   };
 
   return (
-    <div>
+    <>
+      <Seo title="About" path="/Blog/About" />
       <div className="flex justify-center mt-10 ">
         <div className="flex justify-around w-full items-center lg:flex-row lg:gap-0 gap-4 flex-col-reverse">
           <div className="mt-10 lg:mt-0">
@@ -143,7 +145,7 @@ function Page() {
         </div>
       </div>
       {TimeLine()}
-    </div>
+    </>
   );
 }
 

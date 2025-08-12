@@ -1,22 +1,24 @@
-import { ThemeProvider } from "@/context/ThemeContext";
 import React from "react";
 import "./global.css";
-import Head from "next/head";
 import type { Metadata } from "next";
 import JsonLd from "./utils/JsonLd";
 
+const siteName = process.env.NEXT_PUBLIC_SITE_NAME || "Architect Yeliz Acar Blog";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "";
+const siteDescription = process.env.NEXT_PUBLIC_SITE_DESCRIPTION || "";
+
 export const metadata: Metadata = {
   title: {
-    default: "Architect Yeliz Acar", // varsayılan
-    template: "%s | Architect Yeliz Acar Blog", // dinamik başlık formatı
+    default: siteName,
+    template: `%s | ${siteName}`,
   },
-  description: "Mimar Yeliz Acar blog sitesi projelerini içerir ",
+  description: siteDescription,
   openGraph: {
     type: "website",
-    title: "Yeliz Acar",
-    description: "Mimar Yeliz Acar Blog Sitesi",
-    url: "https://yelizacar.vercel.app",
-    siteName: "Yeliz Acar Blog",
+    title: siteName,
+    description: siteDescription,
+    url: siteUrl,
+    siteName: siteName,
   },
   robots: {
     index: true,
@@ -31,11 +33,11 @@ export default function RootLayout({
   const website = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    url: "https://site.com",
-    name: "Site Adı",
+    url: siteUrl,
+    name: siteName,
     potentialAction: {
       "@type": "SearchAction",
-      target: "https://site.com/search?q={query}",
+      target: `${siteUrl}/search?q={query}`,
       "query-input": "required name=query",
     },
   };
@@ -43,9 +45,9 @@ export default function RootLayout({
   const organization = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "Firma Adı",
-    url: "https://site.com",
-    logo: "https://site.com/logo.png",
+    name: siteName,
+    url: siteUrl,
+    logo: `${siteUrl}/logo.png`,
     sameAs: [
       "https://www.instagram.com/hesap",
       "https://www.linkedin.com/company/hesap",
@@ -54,12 +56,9 @@ export default function RootLayout({
 
   return (
     <html lang="tr">
-      <Head>
-        <title>Blog</title>
-      </Head>
-      <JsonLd data={website}/>
-      <JsonLd data={organization}/>
-        <body>{children}</body>
+      <JsonLd data={website} />
+      <JsonLd data={organization} />
+      <body>{children}</body>
     </html>
   );
 }
