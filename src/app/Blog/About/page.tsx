@@ -6,6 +6,8 @@ import { animate, onScroll } from "animejs";
 import { Nunito_Sans } from "next/font/google";
 import "toastify-js/src/toastify.css";
 import Toastify from "toastify-js";
+import type { Metadata } from "next";
+import JsonLd from "@/app/utils/JsonLd";
 
 const nunito = Nunito_Sans({
   subsets: ["latin"],
@@ -17,6 +19,19 @@ const nunito2 = Nunito_Sans({
   weight: ["500"], // sadece regular
   display: "swap",
 });
+
+export const metadata: Metadata = {
+  title: "About - Yeliz Acar",
+  description: "Learn more about architect Yeliz Acar.",
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  name: "About Yeliz Acar",
+  description: "Learn more about architect Yeliz Acar.",
+  url: "https://yelizacarblog.com/Blog/About",
+};
 function Page() {
   useEffect(() => {
     animate(".fade-in-header", {
@@ -73,77 +88,80 @@ function Page() {
   };
 
   return (
-    <div>
-      <div className="flex justify-center mt-10 ">
-        <div className="flex justify-around w-full items-center lg:flex-row lg:gap-0 gap-4 flex-col-reverse">
-          <div className="mt-10 lg:mt-0">
-            {" "}
-            {/* text */}
-            <div className={`mx-auto text-start lg:w-[600px] lg:px-0 px-4 `}>
-              <h1
-                className={` ${nunito.className} font-extrabold text-gray-950 text-3xl font-bold mb-4  fade-in-header`}
-              >
-                Yeliz Acar
-              </h1>
-              <p
-                className={`${nunito2.className} leading-relaxed text-gray-950 text-3xl mt-10 text-justify fade-in-description`}
-              >
-                Yeliz Acar, 2003 yılında İstanbul&apos;da doğmuştur. 2025
-                yılında Bursa Uludağ Üniversitesi Mimarlık bölümünden mezun
-                olmuş bir mimardır.
-              </p>
-              <div className="w-full flex justify-start gap-x-15 mt-10">
-                <img
-                  loading="lazy"
-                  onClick={downloadCV}
-                  className="cursor-pointer"
-                  src="/fonts/docs_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg"
-                  alt="Arrow"
-                  width={40}
-                  height={40}
-                />
-                <img
-                  onClick={() => {
-                    copyLink("yelzacr4141@.gmail.com");
-                  }}
-                  className="cursor-pointer"
-                  src="/fonts/mail_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg"
-                  alt="Arrow"
-                  width={40}
-                  height={40}
-                />
-                <img
-                  onClick={() => {
-                    copyLink("0551 160 14 94");
-                  }}
-                  className="cursor-pointer"
-                  src="/fonts/phone_in_talk_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg"
-                  alt="Arrow"
-                  width={40}
-                  height={40}
-                />
+    <>
+      <JsonLd data={jsonLd} />
+      <div>
+        <div className="flex justify-center mt-10 ">
+          <div className="flex justify-around w-full items-center lg:flex-row lg:gap-0 gap-4 flex-col-reverse">
+            <div className="mt-10 lg:mt-0">
+              {" "}
+              {/* text */}
+              <div className={`mx-auto text-start lg:w-[600px] lg:px-0 px-4 `}>
+                <h1
+                  className={` ${nunito.className} font-extrabold text-gray-950 text-3xl font-bold mb-4  fade-in-header`}
+                >
+                  Yeliz Acar
+                </h1>
+                <p
+                  className={`${nunito2.className} leading-relaxed text-gray-950 text-3xl mt-10 text-justify fade-in-description`}
+                >
+                  Yeliz Acar, 2003 yılında İstanbul&apos;da doğmuştur. 2025
+                  yılında Bursa Uludağ Üniversitesi Mimarlık bölümünden mezun
+                  olmuş bir mimardır.
+                </p>
+                <div className="w-full flex justify-start gap-x-15 mt-10">
+                  <img
+                    loading="lazy"
+                    onClick={downloadCV}
+                    className="cursor-pointer"
+                    src="/fonts/docs_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg"
+                    alt="Arrow"
+                    width={40}
+                    height={40}
+                  />
+                  <img
+                    onClick={() => {
+                      copyLink("yelzacr4141@.gmail.com");
+                    }}
+                    className="cursor-pointer"
+                    src="/fonts/mail_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg"
+                    alt="Arrow"
+                    width={40}
+                    height={40}
+                  />
+                  <img
+                    onClick={() => {
+                      copyLink("0551 160 14 94");
+                    }}
+                    className="cursor-pointer"
+                    src="/fonts/phone_in_talk_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg"
+                    alt="Arrow"
+                    width={40}
+                    height={40}
+                  />
+                </div>
               </div>
             </div>
-          </div>
-          {/* <div className="p-8 space-y-6">
+            {/* <div className="p-8 space-y-6">
             <div className="animate-pulse space-y-4 p-4  rounded-lg shadow w-full max-w-md">
               <div className="h-190 bg-gray-300 rounded w-[468px]"></div>
             </div>
           </div> */}
 
-          <div className="">
-            <Image
-              src='/photo.jpeg'
-              width={468}
-              height={0}
-              alt=""
-              className="block mx-auto"
-            />
+            <div className="">
+              <Image
+                src='/photo.jpeg'
+                width={468}
+                height={0}
+                alt=""
+                className="block mx-auto"
+              />
+            </div>
           </div>
         </div>
+        {TimeLine()}
       </div>
-      {TimeLine()}
-    </div>
+    </>
   );
 }
 
