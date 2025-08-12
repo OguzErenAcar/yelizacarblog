@@ -1,21 +1,23 @@
 "use client";
-import BasicTableOne from "@/components/tables/BasicTableOne";
-import React from "react";
 import ViewTableLayout from "@/layout/ViewTableLayout";
+import React, { useState } from "react";
 import { useParams } from "next/navigation";
 import getTables from "@/services/tables/getTables";
+import { MenuContent, TableMode } from "@/layout/Records";
+import MenuViewer from "@/components/tablemodes/Menu";
 
 function Page() {
-  const Tables = getTables();
+  const [menu, setMenu] = useState<string>("default");
 
-  const { table } = useParams() as { table: keyof typeof Tables };
-  if (!table || !(table in Tables)) {
-    return <div>Not Found</div>;
-  }
-  
+  const ModeComponent = MenuContent[menu];
+
   return (
     <div>
-      <div className="flex flex-col min-h-screen gap-20">{Tables[table]}</div>;
+      <div className="flex flex-col min-h-screen gap-20">
+        <MenuViewer setmenu={setMenu}>
+         <ModeComponent />;
+        </MenuViewer>
+      </div>
     </div>
   );
 }
