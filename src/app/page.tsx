@@ -5,7 +5,7 @@ import React, { useEffect } from 'react'
 
 function Page() {
     const router=useRouter();
-    router.push('/Dashboard/auth/sign-in'); 
+    router.push('/Blog'); 
 }
 
 export default Page

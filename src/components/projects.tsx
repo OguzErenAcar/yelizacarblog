@@ -5,19 +5,23 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Project } from "../app/utils/projectsModel";
 import Aos from "aos";
-import { Nunito_Sans } from 'next/font/google';
+import { Nunito_Sans } from "next/font/google";
 import { usePathname } from "next/navigation";
 
 const nunito = Nunito_Sans({
-  subsets: ['latin'],
-  weight: ['400'],       // sadece regular
-  display: 'swap',
+  subsets: ["latin"],
+  weight: ["400"], // sadece regular
+  display: "swap",
 });
 
 function Projects() {
   const [Projects, setProjects] = useState<Project[] | null>([]);
-  const pathname=usePathname();
-
+  const pathname = usePathname();
+  const getPath = (key: number): string => {
+    return pathname?.includes("/Projects")
+      ? `${pathname}/${key.toString()}`
+      : `${pathname}/Projects/${key.toString()}`;
+  };
 
   useEffect(() => {
     Aos.init({
@@ -33,7 +37,11 @@ function Projects() {
 
   return (
     <div>
-      <h1 className={`${nunito.className} text-center text-black text-5xl my-20`}>PROJECTS</h1>
+      <h1
+        className={`${nunito.className} text-center text-black text-5xl my-20`}
+      >
+        PROJECTS
+      </h1>
       <div className="w-full flex justify-center">
         <div className="xl:max-w-[1280px] ">
           <div className="w-full justify-center hidden md:flex">
@@ -42,9 +50,9 @@ function Projects() {
                 <div key={key}>
                   {key % 2 == 0 && (
                     <div className="flex justify-start mb-20">
-                      <Link href={`${pathname}/Projects/${key}`}>
+                      <Link href={getPath(key)}>
                         <ProjectCard
-                          src={'/'+item.url + item.images[0]}
+                          src={"/" + item.url + item.images[0]}
                           innerWidth={300}
                           className="w-[430px] flex justify-center transition duration-500 ease-in-out transform hover:scale-110"
                         />
@@ -66,9 +74,9 @@ function Projects() {
                         data_aos="fade-right"
                         className="my-auto w-[390px] select-none text-end"
                       />
-                      <Link href={`${pathname}/Projects/${key}`}>
+                      <Link href={getPath(key)}>
                         <ProjectCard
-                          src={'/'+item.url + item.images[0]}
+                          src={"/" + item.url + item.images[0]}
                           innerWidth={300}
                           className="w-[430px] flex justify-center transition duration-500 ease-in-out transform hover:scale-110"
                         />
@@ -85,9 +93,9 @@ function Projects() {
               className="flex flex-col items-center  gap-y-8 md:hidden "
             >
               <>
-                <Link href={`${pathname}/Projects/${key}`}>
+                <Link href={getPath(key)}>
                   <ProjectCard
-                    src={'/'+item.url + item.images[0]}
+                    src={"/" + item.url + item.images[0]}
                     innerWidth={300}
                     className="w-[350px] flex justify-center transition duration-500 ease-in-out transform hover:scale-110"
                   />
