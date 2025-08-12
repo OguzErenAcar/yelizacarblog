@@ -5,6 +5,7 @@ import AOS from 'aos';
 import { useEffect } from "react";
 import dynamic from "next/dynamic"
 import LoadingGate from "../utils/loadingGate"
+import Seo from "../utils/Seo";
 
 
 function Page() {
@@ -18,12 +19,15 @@ function Page() {
     });
   }, []);
   return (
-    <div>
+    <>
+      <Seo title="Home" path="/Blog" />
       <div>
+        <div>
           <Carousel />
           <Projects />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

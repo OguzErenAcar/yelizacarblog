@@ -1,11 +1,15 @@
 import Projects from '@/components/projects'
 import React from 'react'
+import Seo from '../../utils/Seo'
 
 function Page() {
   return (
-    <div>
-      <Projects/>
-    </div>
+    <>
+      <Seo title="Projects" path="/Blog/Projects" />
+      <div>
+        <Projects/>
+      </div>
+    </>
   )
 }
 
