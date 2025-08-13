@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  
   poweredByHeader: false,
   async headers() {
     return [{
@@ -19,6 +20,8 @@ const nextConfig: NextConfig = {
     }];
   },
   images: {
+        formats: ["image/avif", "image/webp"], // mümkünse AVIF/WEBP servis et
+
     remotePatterns: [
       {
         protocol: 'https',

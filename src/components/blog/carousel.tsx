@@ -1,7 +1,8 @@
-
 import React, { useEffect, useState } from "react";
 import { Project } from "../../app/utils/projectsModel";
 import { useRef } from "react";
+import Image from "next/image";
+import SkeletonImage from "../img/skeletonImage";
 
 function Carousel() {
   const [project, setProject] = useState<Project | null>(null);
@@ -19,10 +20,9 @@ function Carousel() {
         {project &&
           project.images.map((item, key) => (
             <div key={key} id={`item${key}`} className="carousel-item w-full ">
-              <img
-                src={project.url + item}
-                className="w-full h-full object-cover object-center "
-                alt="Project Image"
+              <SkeletonImage
+                src={"/" + project.url + item}
+                className="object-cover object-center "
               />
               <div className="absolute bottom-0 left-0 h-1/7 w-full bg-gradient-to-t from-black/40"></div>
             </div>
@@ -44,7 +44,6 @@ function ButonsGroup({ index }: { index: number }) {
   };
   const arr = Array(index).fill(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
- 
 
   // useEffect(() => {
   //   const buttons = buttonsRef.current;
@@ -60,7 +59,7 @@ function ButonsGroup({ index }: { index: number }) {
   //     }, 2000);
 
   //     return () => clearInterval(interval);
-  //   } 
+  //   }
   // }, []);
 
   return (

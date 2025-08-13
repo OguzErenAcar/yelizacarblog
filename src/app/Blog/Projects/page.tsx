@@ -1,4 +1,4 @@
-import Projects from '@/components/projects'
+import Projects from '@/components/blog/projects'
 import React from 'react'
 import Seo from '../../utils/Seo'
 

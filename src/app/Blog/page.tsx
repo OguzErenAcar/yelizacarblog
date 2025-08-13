@@ -1,6 +1,6 @@
 "use client";
-import Carousel from "@/components/homeComp/carousel";
-import Projects from "@/components/projects";
+import Carousel from "@/components/blog/carousel";
+import Projects from "@/components/blog/projects";
 import AOS from 'aos';
 import { useEffect } from "react";
 import dynamic from "next/dynamic"

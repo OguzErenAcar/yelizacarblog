@@ -1,9 +1,9 @@
 "use client";
-import ProjectCard from "./homeComp/projectCard";
-import ProjectText from "./homeComp/projectText";
+import ProjectCard from "./projectCard";
+import ProjectText from "./projectText";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { Project } from "../app/utils/projectsModel";
+import { Project } from "@/app/utils/projectsModel";
 import Aos from "aos";
 import { Nunito_Sans } from "next/font/google";
 import { usePathname } from "next/navigation";

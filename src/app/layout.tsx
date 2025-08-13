@@ -10,7 +10,7 @@ const siteDescription = process.env.NEXT_PUBLIC_SITE_DESCRIPTION || "";
 
 export const metadata: Metadata = {
   title: {
-    default: siteName,
+    default: process.env.NEXT_PUBLIC_SITE_NAME||"",
     template: `%s | ${siteName}`,
   },
   description: siteDescription,
@@ -30,38 +30,22 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
-  const website = {
+}>) { 
+  const breadcrumb = {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    url: siteUrl,
-    name: siteName,
-    potentialAction: {
-      "@type": "SearchAction",
-      target: `${siteUrl}/search?q={query}`,
-      "query-input": "required name=query",
-    },
-  };
-
-  const organization = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: siteName,
-    url: siteUrl,
-    logo: `${siteUrl}/logo.png`,
-    sameAs: [
-      "https://www.instagram.com/hesap",
-      "https://www.linkedin.com/company/hesap",
-    ],
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": `${siteUrl}/` },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${siteUrl}/Blog` }
+    ]
   };
 
   return (
     <html lang="tr">
-     <Head>
-       <JsonLd data={website} />
-      <JsonLd data={organization} />
-     </Head>
-      <body>{children}</body>
+      <body>
+       <JsonLd data={breadcrumb} />
+        {children}
+        </body>
     </html>
   );
 }
