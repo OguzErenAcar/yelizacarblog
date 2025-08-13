@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  
+   optimizeFonts: true,
+  swcMinify: true, // SWC ile minify işlemi
+  compress: true,
   poweredByHeader: false,
   async headers() {
     return [{

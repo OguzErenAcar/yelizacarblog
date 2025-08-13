@@ -6,38 +6,25 @@ interface ImageType {
   className?: string;
   src: string;
   alt?: string;
-  width?: number;
-  height?: number;
-  priority?: boolean;
+  width?: number ;
+  height?: number ;
 }
 
-function SkeletonImage({ className, src, alt, width, height, priority = false }: ImageType) {
-  const [isLoaded, setIsLoaded] = useState(false);
+function SkeletonImage({ className, src, alt, width, height }: ImageType) {
+  const [load, setload] = useState<boolean>(false);
 
   return (
-    <div className={`relative w-full h-full ${className}`} style={{ width, height }}>
-      {!isLoaded && (
-        <Skeleton 
-          className="absolute inset-0 z-10" 
-          style={{ 
-            background: "linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%)",
-            backgroundSize: "200% 100%",
-            animation: "shimmer 1.5s infinite"
-          }} 
-        />
-      )}
-      
+    <div style={{ width, height }} className="w-full h-full relative">
+      {!load && <Skeleton style={{ background: "transparent" }} count={height?height/20:5} />}
       <Image
-        src={src}
-        alt={alt || "image"}
         fill
-        className={`object-cover transition-opacity duration-300 ${
-          isLoaded ? "opacity-100" : "opacity-0"
-        }`}
-        quality={80}
-        priority={priority}
-        onLoadingComplete={() => setIsLoaded(true)}
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 100vw"
+        onLoad={() => setload(true)}
+        style={{ width: load ? "100%" : 0, height: "100%" }}
+        alt={alt || "image"}
+        src={src}
+        className={` ${className}`}
+        quality={1}
+        priority  
       />
     </div>
   );

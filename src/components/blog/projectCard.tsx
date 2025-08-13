@@ -19,8 +19,8 @@ function ProjectCard({
         className="rounded-md  bg-base-100 shadow-xl/30 "
       >
         <SkeletonImage
-          width={undefined}
-          height={undefined}
+          width={320}
+          height={190}
           src={src}
           className="rounded-md"
           alt="project Image"

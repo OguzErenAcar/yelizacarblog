@@ -54,6 +54,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.4.3",
     "sass": "^1.89.2",
+    "terser": "^5.43.1",
     "typescript": "^5"
   }
 }

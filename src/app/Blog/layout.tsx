@@ -59,7 +59,7 @@ export default function Blog({
           <Drawer>
             <Navbar />
             <ResizeProvider>
-              <LoadingGate>{children}</LoadingGate>
+             {children}
             </ResizeProvider>
             <Footer />
           </Drawer>
