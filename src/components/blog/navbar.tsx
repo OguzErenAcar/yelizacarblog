@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { Edu_QLD_Beginner } from "next/font/google";
+import Image from "next/image";
 
 const Lovers = Edu_QLD_Beginner({
   subsets: ["latin"],
@@ -39,7 +40,7 @@ function Navbar() {
           <Link
            aria-label="Logo"
            className="flex gap-x-2" href="/">
-            <img className="" src="/LOGOO.png" width={40} alt="" />
+            <Image src="/LOGOO.png" width={40} height={40} alt="" />
           <h1 className={`${Lovers.className} text-2xl h-[30px] my-auto`}>Yeliz Acar</h1>
           </Link>
         </div>

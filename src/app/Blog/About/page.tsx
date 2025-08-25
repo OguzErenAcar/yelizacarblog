@@ -7,6 +7,7 @@ import { Nunito_Sans } from "next/font/google";
 import "toastify-js/src/toastify.css";
 import Toastify from "toastify-js";
 import Seo from "../../utils/Seo";
+import SkeletonImage from "@/components/img/skeletonImage";
 
 const nunito = Nunito_Sans({
   subsets: ["latin"],
@@ -77,7 +78,7 @@ function Page() {
     <>
       <Seo title="About" path="/Blog/About" />
       <div className="flex justify-center mt-10 ">
-        <div className="flex justify-around w-full items-center lg:flex-row lg:gap-0 gap-4 flex-col-reverse">
+        <div className="flex justify-around w-full items-center xl:flex-row xl:gap-0 gap-4 flex-col-reverse">
           <div className="mt-10 lg:mt-0">
             {" "}
             {/* text */}
@@ -137,7 +138,7 @@ function Page() {
             <Image
               src='/photo.jpeg'
               width={468}
-              height={0}
+              height={700}
               alt="Yeliz Acar image"
               className="block mx-auto"
             />

@@ -1,6 +1,7 @@
 "use client"
-import React, { useEffect } from "react";
-import Seo from "../../utils/Seo";
+  import React, { useEffect } from "react";
+  import Seo from "../../utils/Seo";
+  import Image from "next/image";
 
 function Page() {
 
@@ -94,9 +95,9 @@ function Page() {
             ></textarea>
           </div>
         </div>
-        <div className="  items-center mx-end hidden xl:flex">
-          <img width={500} alt="" src="/fonts/undraw_profile-data_xkr9.svg"></img>
-        </div>
+          <div className="  items-center mx-end hidden xl:flex">
+            <Image width={500} height={500} alt="" src="/fonts/undraw_profile-data_xkr9.svg" />
+          </div>
       </div>
     </div>
     </>

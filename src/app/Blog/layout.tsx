@@ -56,13 +56,16 @@ export default function Blog({
 }>) {
   return ( 
         <StoreProvider>
-          <Drawer>
-            <Navbar />
+           <Drawer>
+          <Navbar />
             <ResizeProvider>
+              <LoadingGate>
+
              {children}
+              </LoadingGate>
             </ResizeProvider>
-            <Footer />
-          </Drawer>
+            <Footer /> 
+          </Drawer> 
         </StoreProvider>
   );
 }

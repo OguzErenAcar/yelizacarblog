@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 export default function LoadingGate({
   children,
@@ -15,7 +16,7 @@ export default function LoadingGate({
 
     const timeout = setTimeout(() => {
       setShowPage(true);
-    }, 1000); // Sayfa yüklenene kadar bekleme süresi
+    }, 500);
 
     return () => clearTimeout(timeout);
   }, [pathname]);
@@ -25,11 +26,11 @@ export default function LoadingGate({
       {showPage ? (
         children
       ) : (
-        <div className=" h-screen flex items-center justify-center bg-white">
-          <div className="myloader">
-            <img src="/LOGOO.png" className="logo-flip" />
+          <div className=" h-screen flex items-center justify-center bg-white">
+            <div className="myloader">
+              <Image src="/LOGOO.png" width={148} height={148} alt="" className="logo-flip" />
+            </div>
           </div>
-        </div>
       )}
     </div>
   );

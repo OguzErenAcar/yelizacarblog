@@ -6,16 +6,36 @@ interface ImageType {
   className?: string;
   src: string;
   alt?: string;
-  width?: number ;
-  height?: number ;
+  width?: number;
+  height?: number;
+  skeletonHeight?:number;
 }
 
-function SkeletonImage({ className, src, alt, width, height }: ImageType) {
+function SkeletonImage({ className, src, alt, width, height,skeletonHeight }: ImageType) {
   const [load, setload] = useState<boolean>(false);
 
   return (
-    <div style={{ width, height }} className="w-full h-full relative">
-      {!load && <Skeleton style={{ background: "transparent" }} count={height?height/20:5} />}
+    <div style={{ width, height }} className={` ${className} relative`}>
+      {!load && (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100%", 
+            width: "100%", 
+          }}
+        >
+          <Skeleton
+            count={height?Math.trunc(height/50):2}
+            width={width?width-100:200} 
+            style={{
+              background: "transparent",
+              display: "block",
+            }}
+          />
+        </div>
+      )}
       <Image
         fill
         onLoad={() => setload(true)}
@@ -23,9 +43,9 @@ function SkeletonImage({ className, src, alt, width, height }: ImageType) {
         alt={alt || "image"}
         src={src}
         className={` ${className}`}
-        quality={1}
+        quality={80}
         priority  
-      />
+      /> 
     </div>
   );
 }

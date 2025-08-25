@@ -5,6 +5,7 @@ import Lightbox, { SlideImage } from "yet-another-react-lightbox";
 import { Project } from '../../../utils/projectsModel';
 import { Nunito_Sans } from 'next/font/google';
 import Skeleton from "react-loading-skeleton";
+import SkeletonImage from "@/components/img/skeletonImage";
 
 const nunito = Nunito_Sans({
   subsets: ['latin'],
@@ -15,7 +16,7 @@ const nunito = Nunito_Sans({
 function  DetailsProject({id}:{id:string}) {
    const [index, setIndex] = useState(-1);
    const [project, setProject] = useState<Project | null>(null);
-   const [load, setLoad] = useState(false);
+
 
 
     useEffect(() => {
@@ -31,11 +32,11 @@ function  DetailsProject({id}:{id:string}) {
    
   return (
     <div> 
-      <div className=" ">
-        {project&&<img
-          className="w-full h-[calc(100vh-80px)]  object-cover object-center"
-          alt=""
+      <div className=" h-[calc(100vh-80px)]">
+      { project&& <SkeletonImage
           src={'/'+project!.url + project!.images[0]}
+          alt="project details"
+          className="w-full  h-full object-cover object-center"
         />}
       </div> 
       <div className={`${nunito.className} text-xl max-w-2xl mx-auto px-4 mt-20 my-[100px] leading-[40px]`}>
@@ -54,20 +55,17 @@ function  DetailsProject({id}:{id:string}) {
               className="border-2 rounded-md  border-gray mx-auto mb-4 md:mb-5 transition duration-1000 ease-in-out transform hover:scale-110"
               key={key}
             >
-              <>
+              <div onClick={()=>setIndex(key)}>
               {/* {load&&<Skeleton width={300} height={10} count={5} />} */}
-              <img
-                style={{}}
-                onLoad={()=>setLoad(true)}
-                onClick={()=>setIndex(key)}
-                width="400"
-                height="170"
+              <SkeletonImage
+                width={300}
+                height={170}
                 alt=""
                 className="rounded-md"
                 src={'/'+project!.url + item}
               
               />
-              </>
+              </div>
             </div>
           ))}
         </div>
