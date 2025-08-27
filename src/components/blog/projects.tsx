@@ -18,9 +18,9 @@ function Projects() {
   const [Projects, setProjects] = useState<Project[] | null>([]);
   const pathname = usePathname();
   const getPath = (key: number): string => {
-    return pathname?.includes("/Projects")
+    return pathname?.includes("/projects")
       ? `${pathname}/${key.toString()}`
-      : `${pathname}/Projects/${key.toString()}`;
+      : `${pathname}/projects/${key.toString()}`;
   };
 
   useEffect(() => {

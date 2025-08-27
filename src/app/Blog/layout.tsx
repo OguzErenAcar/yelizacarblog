@@ -94,16 +94,16 @@ function Drawer({ children }: { children?: React.ReactNode }) {
           className={`${nunito.className} text-lg menu bg-base-200 text-base-content min-h-full w-80 p-4`}
         >
           <li>
-            <Link aria-label="Blog" href="/Blog">Home</Link>
+            <Link aria-label="Blog" href="/blog">Home</Link>
           </li>
           <li>
-            <Link aria-label="Projects" href="/Blog/Projects">Projects</Link>
+            <Link aria-label="Projects" href="/blog/projects">Projects</Link>
           </li>
           <li>
-            <Link aria-label="About" href="/Blog/About">About</Link>
+            <Link aria-label="About" href="/blog/about">About</Link>
           </li>
           <li>
-            <Link aria-label="Contact" href="/Blog/Contact">Contact</Link>
+            <Link aria-label="Contact" href="/blog/contact">Contact</Link>
           </li>
         </ul>
       </div>
