@@ -7,10 +7,10 @@ const now = new Date().toISOString();
 export async function GET() {
   const urls = [
     { loc: `${SITE}/`, lastmod: now },
-    { loc: `${SITE}/about`, lastmod: now },
-    { loc: `${SITE}/contact`, lastmod: now },
+    { loc: `${SITE}/blog/about`, lastmod: now },
+    { loc: `${SITE}/blog/contact`, lastmod: now },
     { loc: `${SITE}/blog`, lastmod: now },  
-    { loc: `${SITE}/projects`, lastmod: now },
+    { loc: `${SITE}/blog/projects`, lastmod: now },
   ];
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>
