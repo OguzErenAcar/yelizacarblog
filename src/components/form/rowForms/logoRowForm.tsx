@@ -4,32 +4,21 @@ import React, { useEffect } from "react";
 import Label from "../Label";
 import Input from "../input/InputField";
 import { Formik, Field, Form, useFormik } from "formik";
-import * as Yup from "yup";
-import { LogoFormValues } from "@/components/tables/LogoTable";
-import FileInput from "../input/FileInput";
-import ImagesGroup from "../form-elements/ImagesGroup";
-import { usePathname } from "next/navigation";
+import * as Yup from "yup"; 
+import ImagesGroup from "../form-elements/ImagesGroup"; 
 
-export default function LogoForm({
-  formData,
-  addformBtn,
-  updformBtn,
-  delformBtn,
-  addData,
-  closeForm,
-  updateData,
-  deleteRow,
-}: {
-  formData: LogoRowObj | null;
-  addformBtn: boolean;
-  updformBtn: boolean;
-  delformBtn: boolean;
-  addData: (data: LogoRowObj) => void;
-  closeForm?: () => void;
-  updateData: (data: LogoRowObj) => void;
-  deleteRow: (id: number) => void;
-}) {
+export default function LogoForm() {
+
+  const formData = {
+  id: 101,
+  url: "https://example.com/logo.png",
+  height: "200",
+  width: "300",
+  userId: 42,
+};
   const formik = useFormik({
+
+
     initialValues: {
         id: formData?.id ?? -1,
         url: formData?.url || "",

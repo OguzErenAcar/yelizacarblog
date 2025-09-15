@@ -13,7 +13,7 @@ export function Button({
     <button
       onClick={onClick}
       style={{ backgroundColor: color }}
-      className=" bg-warning-500 hover:bg-warning-700  text-white  h-[30px] w-[60px] rounded-full"
+      className=" bg-warning-500 hover:bg-warning-700  text-white  h-[30px] w-[150px] rounded-full"
     >
       {text}
     </button>

@@ -1,19 +1,21 @@
-import { ViewTable } from "@/layout/Records";
+import { tableName, ViewTable } from "@/layout/Records";
 import getTables from "@/services/tables/getTables";
 import { useParams } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
+ 
 
 //aslında parametre alabilr 
 function Default() {
-  const { table } = useParams() as {table:string}
+  const { table } = useParams() as {table:keyof typeof ViewTable} 
 
-  const VTKey = table as keyof typeof ViewTable;
-  const Viewer = ViewTable[VTKey];
+   const Viewer = ViewTable[table];
 
   return (
     <div>
-      <div className="flex flex-col min-h-screen gap-20"></div>
-      <Viewer rows={} setRows={}/>
+      <div className="text-black">Default</div>
+      <div className="flex flex-col min-h-screen gap-20">
+      <Viewer operations={false}/>
+      </div>
     </div>
   );
 }

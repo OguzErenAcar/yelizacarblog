@@ -5,7 +5,7 @@ function MenuViewer({ setmenu,children }: { setmenu: (text:string) => void ,chil
   return (
     <div>
     <div className="flex justify-center gap-4">
-      <Button onClick={()=>{setmenu("default")}}>View Table</Button>
+      <Button onClick={()=>{setmenu("default")}}>Default</Button>
       <Button onClick={()=>{setmenu("operations")}}>Operations</Button>
     </div>
     {children}

@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useParams } from "next/navigation";
 import getTables from "@/services/tables/getTables";
 import { MenuContent, TableMode } from "@/layout/Records";
-import MenuViewer from "@/components/tablemodes/Menu";
+import MenuViewer from "@/components/tablemodes/Menu"; 
 
 function Page() {
   const [menu, setMenu] = useState<string>("default");
@@ -13,10 +13,10 @@ function Page() {
 
   return (
     <div>
-      <div className="flex flex-col min-h-screen gap-20">
-        <MenuViewer setmenu={setMenu}>
-         <ModeComponent />;
-        </MenuViewer>
+      <div className="flex flex-col min-h-screen gap-20"> 
+          <MenuViewer setmenu={setMenu}>
+            <ModeComponent />
+          </MenuViewer> 
       </div>
     </div>
   );
