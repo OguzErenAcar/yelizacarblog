@@ -1,13 +1,14 @@
+import React from 'react'
 import ComponentCard from "@/components/common/ComponentCard";
 import { Button } from "@/components/ui/myUI/myui";
-import React, { useEffect } from "react";
-import Label from "../Label";
-import Input from "../input/InputField";
+import  { useEffect } from "react";
 import { Formik, Field, Form, useFormik } from "formik";
 import * as Yup from "yup";
-import { LogoFormValues } from "@/components/tables/LogoTable";
+import Label from '@/components/form/Label';
+import Input from '@/components/form/input/InputField';
+import { LogoFormValues } from './page';
 
-export default function LogoForm({
+function LogoForm({
   formData,
   addformBtn,
   updformBtn,
@@ -117,3 +118,6 @@ export default function LogoForm({
     </ComponentCard>
   );
 }
+
+
+export default LogoForm

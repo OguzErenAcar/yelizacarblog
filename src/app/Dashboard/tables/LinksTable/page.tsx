@@ -2,17 +2,18 @@
 import tableData from "@/views/tableViews/tableDataLogo";
 import React, { useState } from "react";
 
+
 import {
   Table,
   TableBody,
   TableCell,
   TableHeader,
   TableRow,
-} from "../ui/table";
-import { Button } from "../ui/myUI/myui";
-import ComponentCard from "../common/ComponentCard";
-import Label from "../form/Label";
-import Input from "../form/input/InputField";
+} from "../../../../components/ui/table";
+import { Button } from "../../../../components/ui/myUI/myui";
+import ComponentCard from "@/components/common/ComponentCard";
+import Label from "@/components/form/Label";
+import Input from "@/components/form/input/InputField";
 
 function LinksTable() {
   const [editComp, setEditComp] = useState(false);
