@@ -1,32 +1,19 @@
-import React from 'react'
+import React from "react";
 import ComponentCard from "@/components/common/ComponentCard";
 import { Button } from "@/components/ui/myUI/myui";
-import  { useEffect } from "react";
+import { useEffect } from "react";
 import { Formik, Field, Form, useFormik } from "formik";
 import * as Yup from "yup";
-import Label from '@/components/form/Label';
-import Input from '@/components/form/input/InputField';
-import { LogoFormValues } from './page';
+import Label from "@/components/form/Label";
+import Input from "@/components/form/input/InputField";
 
-function LogoForm({
-  formData,
-  addformBtn,
-  updformBtn,
-  delformBtn,
-  addData,
-  closeForm,
-  updateData,
-  deleteRow,
-}: {
-  formData: LogoRowObj|null;
-  addformBtn: boolean;
-  updformBtn: boolean;
-  delformBtn: boolean;
-  addData: (data: LogoFormValues) => void;
-  closeForm?: () => void;
-  updateData: (data: LogoFormValues) => void;
-  deleteRow: (id: number) => void;
-}) {
+type Form = {
+  formData?: LogoRowObj;
+};
+
+function LogoForm({ formData }: Form) {
+
+
   const formik = useFormik({
     initialValues: { url: "", height: "", width: "" },
     onSubmit: () => {},
@@ -36,23 +23,26 @@ function LogoForm({
   useEffect(() => {
     formik.resetForm({
       values: {
-        url: formData?.url||"",
-        height: formData?.height||"",
-        width: formData?.width||"",
+        url: formData?.url || "",
+        height: formData?.height || "",
+        width: formData?.width || "",
       },
     });
-    
   }, [formData]);
+
+  const addRow = (row: typeof formik.values) => {
+
+  };
+  const updateRow = (row: typeof formik.values)  => {
+
+  };
+  const deleteRow = (id: number)  => {
+
+  };
 
   return (
     <ComponentCard title="Row" className="pb-10 relative">
-      <div className="absolute top-4 right-4">
-        <Button
-          onClick={closeForm}
-          text="x"
-          color="oklch(57.7% 0.245 27.325)"
-        />
-      </div>
+ 
       <div>
         <Label htmlFor="url">Url</Label>
         <Input
@@ -84,27 +74,27 @@ function LogoForm({
         />
       </div>
       <div className="absolute bottom-4 right-4">
-        {addformBtn && (
+        {
           <button
             onClick={() => {
-              addData(formik.values);
+              addRow(formik.values);
             }}
             className=" bg-blue-500 hover:bg-blue-700  text-white  h-[30px] w-[70px] rounded-full"
           >
             Add
           </button>
-        )}
-        {updformBtn && (
+        }
+        {
           <button
             onClick={() => {
-              updateData(formik.values);
+              updateRow(formik.values);
             }}
             className=" bg-green-500 hover:bg-green-700  text-white  h-[30px] w-[70px] rounded-full"
           >
             Update
           </button>
-        )}
-        {delformBtn && (
+        }
+        {
           <button
             onClick={() => {
               deleteRow(formData!.id);
@@ -113,11 +103,10 @@ function LogoForm({
           >
             Delete
           </button>
-        )}
+        }
       </div>
     </ComponentCard>
   );
 }
 
-
-export default LogoForm
+export default LogoForm;

@@ -1,21 +1,27 @@
-import React from 'react'
+import React from "react";
 import tableData from "@/views/tableViews/tableDataLogo";
+import { ReactNode } from "react";
 import {
   Table,
   TableBody,
   TableCell,
   TableHeader,
   TableRow,
-} from "../../../../components/ui/table";
+} from "../../../../../components/ui/table";
 function ViewTable({
-  rows,
-  updateRow,
-  deleteRow,
+  children,
+  operations = false,
 }: {
-  rows: LogoRowObj[];
-  updateRow: (id: number) => void;
-  deleteRow: (id: number) => void;
+  children?: React.ReactNode;
+  operations?: boolean;
 }) {
+  const updateRow = (id:number) => {
+
+  };
+  const deleteRow = (id:number) => {
+
+  };
+
   return (
     <div className="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-white/[0.05] dark:bg-white/[0.03]">
       <div className="max-w-full overflow-x-auto">
@@ -52,18 +58,6 @@ function ViewTable({
               >
                 UserId
               </TableCell>
-              <TableCell
-                isHeader
-                className="px-5 py-3 mx- font-medium text-gray-500 mx-auto text-theme-xs dark:text-gray-400"
-              >
-                Update
-              </TableCell>
-              <TableCell
-                isHeader
-                className="px-5 py-3 font-medium text-gray-500 mx-auto text-theme-xs dark:text-gray-400"
-              >
-                Delete
-              </TableCell>
             </TableRow>
           </TableHeader>
 
@@ -86,22 +80,26 @@ function ViewTable({
                 <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
                   {data.userId}
                 </TableCell>
-                <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                  <button
-                    className="ms-2 bg-warning-500 hover:bg-warning-700  text-white  h-[30px] w-[70px] rounded-full"
-                    onClick={() => updateRow(data.id)}
-                  >
-                    Update
-                  </button>
-                </TableCell>
-                <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                  <button
-                    className="ms-2 bg-red-500 hover:bg-red-700  text-white  h-[30px] w-[70px] rounded-full"
-                    onClick={() => deleteRow(data.id)}
-                  >
-                    Delete{" "}
-                  </button>
-                </TableCell>
+                {operations && (
+                  <>
+                    <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                      <button
+                        className="ms-2 bg-warning-500 hover:bg-warning-700  text-white  h-[30px] w-[70px] rounded-full"
+                        onClick={() => updateRow(data.id)}
+                      >
+                        Update
+                      </button>
+                    </TableCell>
+                    <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                      <button
+                        className="ms-2 bg-red-500 hover:bg-red-700  text-white  h-[30px] w-[70px] rounded-full"
+                        onClick={() => deleteRow(data.id)}
+                      >
+                        Delete{" "}
+                      </button>
+                    </TableCell>
+                  </>
+                )}
               </TableRow>
             ))}
           </TableBody>
@@ -110,4 +108,4 @@ function ViewTable({
     </div>
   );
 }
-export default ViewTable
+export default ViewTable;

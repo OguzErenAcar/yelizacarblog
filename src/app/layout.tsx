@@ -1,6 +1,6 @@
 import { ThemeProvider } from "@/context/ThemeContext";
 import React from "react";
-import "./global.css"
+
 
 
 export default function RootLayout({

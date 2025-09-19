@@ -5,7 +5,7 @@ import Footer from "@/components/footer";
 import { StoreProvider } from "@/store/storeProvider";
 import Link from "next/link";
 import ResizeProvider from "../utils/resizeProvider";
-
+import "./global.css"
 import "aos/dist/aos.css";
 import "react-image-gallery/styles/css/image-gallery.css";
 import "yet-another-react-lightbox/styles.css";
