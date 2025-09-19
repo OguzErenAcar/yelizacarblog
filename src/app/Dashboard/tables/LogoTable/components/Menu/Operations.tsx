@@ -10,7 +10,6 @@ function Operations() {
   const [row, setRow] = useState<LogoRowObj | undefined>(undefined);
 
 
-  
   const openModal = (operation: string) => {
    console.log(operation)
     setOpen(true);
