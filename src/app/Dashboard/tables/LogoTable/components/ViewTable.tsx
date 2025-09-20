@@ -11,16 +11,14 @@ import {
 function ViewTable({
   children,
   operations = false,
+  updateRow,
+  deleteRow
 }: {
   children?: React.ReactNode;
   operations?: boolean;
+  updateRow?:(id:number)=>void,
+  deleteRow?:(id:number)=>void
 }) {
-  const updateRow = (id:number) => {
-
-  };
-  const deleteRow = (id:number) => {
-
-  };
 
   return (
     <div className="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-white/[0.05] dark:bg-white/[0.03]">
@@ -85,7 +83,7 @@ function ViewTable({
                     <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
                       <button
                         className="ms-2 bg-warning-500 hover:bg-warning-700  text-white  h-[30px] w-[70px] rounded-full"
-                        onClick={() => updateRow(data.id)}
+                        onClick={() => updateRow!(data.id)}
                       >
                         Update
                       </button>
@@ -93,7 +91,7 @@ function ViewTable({
                     <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
                       <button
                         className="ms-2 bg-red-500 hover:bg-red-700  text-white  h-[30px] w-[70px] rounded-full"
-                        onClick={() => deleteRow(data.id)}
+                        onClick={() => deleteRow!(data.id)}
                       >
                         Delete{" "}
                       </button>

@@ -3,25 +3,51 @@ import ViewTable from "../ViewTable";
 import LogoForm from "../LogoForm";
 import Tools from "../Tools";
 import { Modal } from "@/components/ui/modal";
-import tableData from "@/views/tableViews/tableDataLogo";
+import { DeleteAllModal, DeleteModal } from "../Dialogs";
 
 function Operations() {
   const [open, setOpen] = useState<boolean>(false);
-  const [row, setRow] = useState<LogoRowObj | undefined>(undefined);
+  const [operation, setOperation] = useState<string>("addRow");
+  const [id, setId] = useState<number>(-1);
 
+  const Content: Record<string, (id: number) => React.ReactNode> = {
+    deleteAll: () => <DeleteAllModal setState={deleteAllRowData} />,
+    addRow: () => <LogoForm />,
+    updateRow: (id: number) => <LogoForm id={id} />,
+    deleteRow: (id: number) => <DeleteModal setState={deleteRowData} />,
+  };
 
   const openModal = (operation: string) => {
-   console.log(operation)
+    setOperation(operation);
     setOpen(true);
+  };
+
+  const deleteAllRowData = (state: boolean) => {
+    setOpen(false);
+  };
+  const deleteRowData = (state: boolean) => {
+    setOpen(false);
+  };
+  const updateRow = (id: number) => {
+    setId(id);
+    openModal("updateRow");
+  };
+  const deleteRow = (id: number) => {
+    setId(id);
+    openModal("deleteRow");
   };
 
   return (
     <div>
       <Modal isOpen={open} onClose={() => setOpen(false)}>
-        <LogoForm formData={row} />
+        {Content[operation](id)}
       </Modal>
       <Tools setModal={openModal} />
-      <ViewTable operations={true} />
+      <ViewTable
+        updateRow={updateRow}
+        deleteRow={deleteRow}
+        operations={true}
+      />
     </div>
   );
 }

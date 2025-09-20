@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ComponentCard from "@/components/common/ComponentCard";
 import { Button } from "@/components/ui/myUI/myui";
 import { useEffect } from "react";
@@ -7,12 +7,12 @@ import * as Yup from "yup";
 import Label from "@/components/form/Label";
 import Input from "@/components/form/input/InputField";
 
-type Form = {
-  formData?: LogoRowObj;
-};
 
-function LogoForm({ formData }: Form) {
 
+function LogoForm({ id }: {id?:number}) {
+
+ 
+const [formData,setFormData]=useState<LogoRowObj|undefined>(undefined);
 
   const formik = useFormik({
     initialValues: { url: "", height: "", width: "" },
