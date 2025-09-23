@@ -21,9 +21,6 @@ export default function LogoTable() {
 
   const ActiveComponent = MenuMap[viewMenu];
 
-  const DefaultBtn = () => {
-    setViewMenu("Default");
-  };
   const OperationsBtn = () => {
     setViewMenu("Operations");
   };
@@ -34,6 +31,7 @@ export default function LogoTable() {
     setViewMenu("Filter");
   };
   const RefreshBtn = () => {
+    setViewMenu("Default");
   };
 
   return (
@@ -42,21 +40,13 @@ export default function LogoTable() {
         <ul className="flex gap-5">
           <li>
             <Button
-              onClick={DefaultBtn}
-              color="blue"
-              text="Default"
-              width={100}
-            />
-          </li>
-          <li>
-            <Button
               onClick={OperationsBtn}
-              color="blue"
+              className="bg-blue-800"
               text="Operations"
               width={100}
             />
           </li>
-          <li></li> 
+          <li></li>
         </ul>
         <ul className="flex gap-x-5">
           {" "}
@@ -127,66 +117,66 @@ export default function LogoTable() {
             </button>
           </li>
           <li>
-              <button onClick={RefreshBtn}>
-                              <svg
-              data-icon-name="refresh"
-              data-style="line"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-              id="refresh"
-              className="icon line"
-              width="32"
-              height="32"
-            >
-              <polyline
-                style={{
-                  fill: "none",
-                  stroke: "rgb(0, 0, 0)",
-                  strokeLinecap: "round",
-                  strokeLinejoin: "round",
-                  strokeWidth: 1,
-                }}
-                points="12 16 14 18 12 20"
-                id="primary"
-              ></polyline>
-              <path
-                style={{
-                  fill: "none",
-                  stroke: "rgb(0, 0, 0)",
-                  strokeLinecap: "round",
-                  strokeLinejoin: "round",
-                  strokeWidth: 1,
-                }}
-                d="M6,6H4A1,1,0,0,0,3,7V17a1,1,0,0,0,1,1H14"
-                data-name="primary"
-                id="primary-2"
-              ></path>
-              <polyline
-                style={{
-                  fill: "none",
-                  stroke: "rgb(0, 0, 0)",
-                  strokeLinecap: "round",
-                  strokeLinejoin: "round",
-                  strokeWidth: 1,
-                }}
-                points="12 8 10 6 12 4"
-                data-name="primary"
-                id="primary-3"
-              ></polyline>
-              <path
-                style={{
-                  fill: "none",
-                  stroke: "rgb(0, 0, 0)",
-                  strokeLinecap: "round",
-                  strokeLinejoin: "round",
-                  strokeWidth: 1,
-                }}
-                d="M18,18h2a1,1,0,0,0,1-1V7a1,1,0,0,0-1-1H10"
-                data-name="primary"
-                id="primary-4"
-              ></path>
-            </svg>
-              </button>
+            <button id={"refreshBtn"} onClick={RefreshBtn}>
+              <svg
+                data-icon-name="refresh"
+                data-style="line"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                id="refresh"
+                className="icon line"
+                width="32"
+                height="32"
+              >
+                <polyline
+                  style={{
+                    fill: "none",
+                    stroke: "rgb(0, 0, 0)",
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: 1,
+                  }}
+                  points="12 16 14 18 12 20"
+                  id="primary"
+                ></polyline>
+                <path
+                  style={{
+                    fill: "none",
+                    stroke: "rgb(0, 0, 0)",
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: 1,
+                  }}
+                  d="M6,6H4A1,1,0,0,0,3,7V17a1,1,0,0,0,1,1H14"
+                  data-name="primary"
+                  id="primary-2"
+                ></path>
+                <polyline
+                  style={{
+                    fill: "none",
+                    stroke: "rgb(0, 0, 0)",
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: 1,
+                  }}
+                  points="12 8 10 6 12 4"
+                  data-name="primary"
+                  id="primary-3"
+                ></polyline>
+                <path
+                  style={{
+                    fill: "none",
+                    stroke: "rgb(0, 0, 0)",
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: 1,
+                  }}
+                  d="M18,18h2a1,1,0,0,0,1-1V7a1,1,0,0,0-1-1H10"
+                  data-name="primary"
+                  id="primary-4"
+                ></path>
+              </svg>
+            </button>
           </li>
         </ul>
       </div>

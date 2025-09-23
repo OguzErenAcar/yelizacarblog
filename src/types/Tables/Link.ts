@@ -1,7 +1,12 @@
 type LinkRowObj = {
     id: number;
     name: string
-    linkUrl: string;
-    fontUrl: string;
-    userId: number
+    LinkUrl: string;
+    FontUrl: string;
+    UserId: number;
+    isActive:boolean;
+    rowOfNumber:number;
+    CreatedAt?:Date;
+    UpdatedAt?:Date;
+    IsDeleted?:boolean;
 }

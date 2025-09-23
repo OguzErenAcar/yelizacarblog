@@ -6,4 +6,9 @@ type InfoRowObj = {
     header : string;
     description : string;
     userId : number;
+    isActive:boolean;
+    rowOfNumber:number;
+    CreatedAt?:Date;
+    UpdatedAt?:Date;
+    IsDeleted?:boolean;
 };

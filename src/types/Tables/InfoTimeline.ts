@@ -1,5 +1,9 @@
 type TimeLineRowObj = {
-    id : number;
-    value : string;
+    Header : number;
+    isActive : string;
     infoId : number;
+    rowOfNumber:number;
+    CreatedAt?:Date;
+    UpdatedAt?:Date;
+    IsDeleted?:boolean;
 };      

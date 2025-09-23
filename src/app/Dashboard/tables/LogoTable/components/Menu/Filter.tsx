@@ -10,8 +10,8 @@ function Filter() {
   return (
     <div>
       Filter 
-      <TableFilters />
-      <ViewTable operations={false} />
+      {/* <TableFilters />
+      <ViewTable operations={false} /> */}
     </div>
   );
 }

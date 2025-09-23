@@ -4,18 +4,20 @@ export function Button({
   onClick,
   color,
   text,
-  width
+  width,
+  className
 }: {
   onClick?: () => void;
   color?: string;
   text: string;
-  width?:number
+  width?:number,
+  className?:string
 }): React.JSX.Element {
   return (
     <button
       onClick={onClick}
       style={{ backgroundColor: color ,width:width}}
-      className=" bg-warning-500 hover:bg-warning-700  text-white  h-[30px] rounded-full"
+      className={`${className}    text-white  h-[30px] rounded-full`}
     >
       {text}
     </button>

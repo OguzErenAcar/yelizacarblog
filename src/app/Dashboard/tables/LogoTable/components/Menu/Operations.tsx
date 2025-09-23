@@ -11,22 +11,22 @@ function Operations() {
   const [id, setId] = useState<number>(-1);
 
   const Content: Record<string, (id: number) => React.ReactNode> = {
-    deleteAll: () => <DeleteAllModal setState={deleteAllRowData} />,
-    addRow: () => <LogoForm />,
-    updateRow: (id: number) => <LogoForm id={id} />,
-    deleteRow: (id: number) => <DeleteModal setState={deleteRowData} />,
+    deleteAll: () => <DeleteAllModal closeModal={closeModal} />,
+    addRow: () => <LogoForm add={true} closeModal={closeModal}/>,
+    updateRow: (id: number) => (
+      <LogoForm id={id} update={true} delete_={true} closeModal={closeModal}/>
+    ),
+    deleteRow: (id: number) => <DeleteModal closeModal={closeModal} />,
   };
 
   const openModal = (operation: string) => {
     setOperation(operation);
     setOpen(true);
   };
-
-  const deleteAllRowData = (state: boolean) => {
+  const closeModal = () => {
     setOpen(false);
-  };
-  const deleteRowData = (state: boolean) => {
-    setOpen(false);
+   const btn= document.querySelector("#refreshBtn") as HTMLButtonElement;
+   btn.click();
   };
   const updateRow = (id: number) => {
     setId(id);

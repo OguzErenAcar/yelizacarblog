@@ -1,6 +1,9 @@
 type UserRowObj = {
     id : number;
-    name : string;
-    email : string;
-    info : string;
+    Name : string;
+    accountId:number;
+    rowOfNumber:number;
+    CreatedAt?:Date;
+    UpdatedAt?:Date;
+    IsDeleted?:boolean;
 };
