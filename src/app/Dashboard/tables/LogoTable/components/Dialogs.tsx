@@ -27,7 +27,7 @@ export function DeleteAllModal({ closeModal }: { closeModal: () => void }) {
   );
 }
 
-export function DeleteModal({ closeModal }: { closeModal: () => void }) {
+export function DeleteModal({ id,closeModal }: { id:number,closeModal: () => void }) {
   const yesBtn = () => {
     fetch(`http://localhost:5045/api/Logo/delete?userId=${USERID}`).then(
       (res) => {

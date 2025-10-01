@@ -16,7 +16,7 @@ function Operations() {
     updateRow: (id: number) => (
       <LogoForm id={id} update={true} delete_={true} closeModal={closeModal}/>
     ),
-    deleteRow: (id: number) => <DeleteModal closeModal={closeModal} />,
+    deleteRow: (id: number) => <DeleteModal id={id} closeModal={closeModal} />,
   };
 
   const openModal = (operation: string) => {
