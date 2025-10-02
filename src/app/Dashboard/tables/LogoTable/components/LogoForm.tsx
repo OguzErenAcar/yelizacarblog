@@ -90,6 +90,7 @@ function LogoForm({
   const deleteFileFromStorage = async (
     name: string | undefined
   ): Promise<StorageResponse | undefined> => {
+    console.log(`${name} name`)
     if (name == undefined) {
       const data: StorageResponse = await {
         message: "Delete File From Storage ,name is undefined",
@@ -201,7 +202,7 @@ function LogoForm({
   };
   const deleteRow = (id: number) => {
     console.log("delete row");
-    deleteFileFromStorage(LogoFile?.name)
+    deleteFileFromStorage(initialData?.logoUrl)
       .then((res) => {
         if (res?.status != 200)
           return failToast("delete file from storage error");
@@ -238,7 +239,6 @@ function LogoForm({
       </div>
       <div>
         <Label htmlFor="url">Url</Label>
-        name={formik.values.logoUrl}
         <FileInput
           name={formik.values.logoUrl}
           getFile={(logoFile: File | undefined) => {

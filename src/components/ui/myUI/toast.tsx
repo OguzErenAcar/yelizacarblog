@@ -1,4 +1,5 @@
 import Toastify from 'toastify-js';
+import 'toastify-js/src/toastify.css';
 
 
 
@@ -18,6 +19,8 @@ export function successToast(text: string) {
     },
   }).showToast();
 }
+
+
 export function failToast(text: string) {
   Toastify({
     text: text,

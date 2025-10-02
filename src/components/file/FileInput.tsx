@@ -24,10 +24,12 @@ export default function FileInput({ name, getFile, limitNum }: FileInputProps) {
   }, [name]);
 
   useEffect(() => { 
-    if (file == undefined) { 
-      setFile(undefined);
+    if (file == undefined) {  
       getFile(undefined)
+      console.log("file",file)
     }
+      console.log("file",file)
+
   }, [file]);
 
   const handleDragEnter = (e: DragEvent) => {
@@ -72,18 +74,8 @@ export default function FileInput({ name, getFile, limitNum }: FileInputProps) {
     
   };
 
-  const deleteFile = () => {
-    // deleteFileFromStorage()
-    //   .then((res) => {
-    //     if (res?.status != 200)
-    //       return failToast("delete file from storage error");
-    //     return successToast("delete file from storage error");
-    //   })
-    //   .catch(() => {
-    //     return failToast("Load file from storage error");
-    //   });
-    setFile(undefined);
-
+  const deleteFile = () => { 
+    setFile(undefined); 
   };
 
   const setPreview = (el: string | undefined) => {
@@ -112,7 +104,7 @@ export default function FileInput({ name, getFile, limitNum }: FileInputProps) {
                 </tr>
               </thead>
               <tbody>
-                {file&&<tr>
+                {file?.name!=''&&<tr>
                     <td>{0}</td>
                     <td>
                       <button onClick={() => setPreview(file?.name)}>

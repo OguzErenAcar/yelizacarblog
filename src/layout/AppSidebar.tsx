@@ -74,34 +74,34 @@ const navItems: NavItem[] = [
 ];
 
 const othersItems: NavItem[] = [
-  {
-    icon: <PieChartIcon />,
-    name: "Charts",
-    subItems: [
-      { name: "Line Chart", path: "/Dashboard/line-chart", pro: false },
-      { name: "Bar Chart", path: "/Dashboard/bar-chart", pro: false },
-    ],
-  },
-  {
-    icon: <BoxCubeIcon />,
-    name: "UI Elements",
-    subItems: [
-      { name: "Alerts", path: "/Dashboard/alerts", pro: false },
-      { name: "Avatar", path: "/Dashboard/avatars", pro: false },
-      { name: "Badge", path: "/Dashboard/badge", pro: false },
-      { name: "Buttons", path: "/Dashboard/buttons", pro: false },
-      { name: "Images", path: "/Dashboard/images", pro: false },
-      { name: "Videos", path: "/Dashboard/videos", pro: false },
-    ],
-  },
-  {
-    icon: <PlugInIcon />,
-    name: "Authentication",
-    subItems: [
-      { name: "Sign In", path: "/signin", pro: false },
-      { name: "Sign Up", path: "/signup", pro: false },
-    ],
-  },
+  // {
+  //   icon: <PieChartIcon />,
+  //   name: "Charts",
+  //   subItems: [
+  //     { name: "Line Chart", path: "/Dashboard/line-chart", pro: false },
+  //     { name: "Bar Chart", path: "/Dashboard/bar-chart", pro: false },
+  //   ],
+  // },
+  // {
+  //   icon: <BoxCubeIcon />,
+  //   name: "UI Elements",
+  //   subItems: [
+  //     { name: "Alerts", path: "/Dashboard/alerts", pro: false },
+  //     { name: "Avatar", path: "/Dashboard/avatars", pro: false },
+  //     { name: "Badge", path: "/Dashboard/badge", pro: false },
+  //     { name: "Buttons", path: "/Dashboard/buttons", pro: false },
+  //     { name: "Images", path: "/Dashboard/images", pro: false },
+  //     { name: "Videos", path: "/Dashboard/videos", pro: false },
+  //   ],
+  // },
+  // {
+  //   icon: <PlugInIcon />,
+  //   name: "Authentication",
+  //   subItems: [
+  //     { name: "Sign In", path: "/signin", pro: false },
+  //     { name: "Sign Up", path: "/signup", pro: false },
+  //   ],
+  // },
 ];
 
 const AppSidebar: React.FC = () => {
@@ -297,7 +297,7 @@ const AppSidebar: React.FC = () => {
 
   return (
     <aside
-      className={`fixed mt-16 flex flex-col lg:mt-0 top-0 px-5 left-0 bg-white dark:bg-gray-900 dark:border-gray-800 text-gray-900 h-screen transition-all duration-300 ease-in-out z-50 border-r border-gray-200 
+      className={` fixed mt-16 flex flex-col lg:mt-0 top-0 px-5 left-0 bg-white dark:bg-gray-900 dark:border-gray-800 text-gray-900 h-screen transition-all duration-300 ease-in-out z-50 border-r border-gray-200 
         ${
           isExpanded || isMobileOpen
             ? "w-[290px]"

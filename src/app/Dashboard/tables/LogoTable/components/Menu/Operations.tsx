@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ViewTable from "../ViewTable";
 import LogoForm from "../LogoForm";
 import Tools from "../Tools";
 import { Modal } from "@/components/ui/modal";
 import { DeleteAllModal, DeleteModal } from "../Dialogs";
+import { Button } from "@/components/ui/myUI/myui"; 
+ 
 
 function Operations() {
   const [open, setOpen] = useState<boolean>(false);
@@ -12,9 +14,9 @@ function Operations() {
 
   const Content: Record<string, (id: number) => React.ReactNode> = {
     deleteAll: () => <DeleteAllModal closeModal={closeModal} />,
-    addRow: () => <LogoForm add={true} closeModal={closeModal}/>,
+    addRow: () => <LogoForm add={true} closeModal={closeModal} />,
     updateRow: (id: number) => (
-      <LogoForm id={id} update={true} delete_={true} closeModal={closeModal}/>
+      <LogoForm id={id} update={true} delete_={true} closeModal={closeModal} />
     ),
     deleteRow: (id: number) => <DeleteModal id={id} closeModal={closeModal} />,
   };
@@ -25,8 +27,8 @@ function Operations() {
   };
   const closeModal = () => {
     setOpen(false);
-   const btn= document.querySelector("#refreshBtn") as HTMLButtonElement;
-   btn.click();
+    const btn = document.querySelector("#refreshBtn") as HTMLButtonElement;
+    btn.click();
   };
   const updateRow = (id: number) => {
     setId(id);
@@ -36,9 +38,11 @@ function Operations() {
     setId(id);
     openModal("deleteRow");
   };
+ 
 
   return (
-    <div>
+    <div> 
+
       <Modal isOpen={open} onClose={() => setOpen(false)}>
         {Content[operation](id)}
       </Modal>

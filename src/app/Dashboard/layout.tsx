@@ -1,6 +1,6 @@
 import { ThemeProvider } from "@/context/ThemeContext";
 import React from "react";
-import "../../styles/index.css"
+import "@/styles/index.css"
 import AppLayout from "@/layout/AppLayout";
 import { ScrollToTop } from "@/components/common/ScrollToTop";
 
