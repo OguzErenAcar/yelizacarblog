@@ -2,10 +2,10 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Lightbox, { SlideImage } from "yet-another-react-lightbox";
-import { Project } from '../../../utils/projectsModel';
 import { Nunito_Sans } from 'next/font/google';
 import Skeleton from "react-loading-skeleton";
 import SkeletonImage from "@/components/img/skeletonImage";
+import {  Project } from "../../../../types/api/apiTypes";
 
 const nunito = Nunito_Sans({
   subsets: ['latin'],
@@ -20,13 +20,12 @@ function  DetailsProject({id}:{id:string}) {
 
 
     useEffect(() => {
-      fetch("/projects.json")
+      fetch(process.env.NEXT_PUBLIC_HOST+"/dashboard/api/projects/"+id+"?populate=%2A")
         .then((res) => res.json())
         .then((data) => {
-         const projects=data.uploads.user.projects as Project[];
-         const proj=projects.filter((x,i)=>i.toString()==id)
-         console.log(proj[0].url+proj[0].images[0])
-         setProject(proj[0]);
+         const project=data.data as Project;
+         console.log(project)
+         setProject(project);
         });
     }, []);
    
@@ -34,22 +33,22 @@ function  DetailsProject({id}:{id:string}) {
     <div> 
       <div className=" h-[calc(100vh-80px)]">
       { project&& <SkeletonImage
-          src={'/'+project!.url + project!.images[0]}
+          src={process.env.NEXT_PUBLIC_HOST+"/dashboard"+project.ProjectImages![0].url}
           alt="project details"
           className="w-full  h-full object-cover object-center"
         />}
       </div> 
       <div className={`${nunito.className} text-xl max-w-2xl mx-auto px-4 mt-20 my-[100px] leading-[40px]`}>
-        <h2 className={`text-black text-center  font-black text-2xl font-bold mb-4 `}>{project?.title||<Skeleton/>}</h2>
+        <h2 className={`text-black text-center  font-black text-2xl font-bold mb-4 `}>{project?.Title||<Skeleton/>}</h2>
         <p className={`${nunito.className} text-black text-md text-justify mt-15`}>
-          {project?.description ||<Skeleton/>}
+          {project?.Description ||<Skeleton/>}
         </p>
       </div>
       <div 
         className=" flex items-center justify-center mb-12 ">
         <div className="grid grid-cols-3 gap-y-2 gap-x-4 w-[80%] grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))]">
           
-          {project&&project!.images.map((item, key) => (
+          {project&&project!.ProjectImages?.map((item, key) => (
             
             <div
               className="border-2 rounded-md  border-gray mx-auto mb-4 md:mb-5 transition duration-1000 ease-in-out transform hover:scale-110"
@@ -62,7 +61,7 @@ function  DetailsProject({id}:{id:string}) {
                 height={170}
                 alt=""
                 className="rounded-md"
-                src={'/'+project!.url + item}
+                src={process.env.NEXT_PUBLIC_HOST+"/dashboard"+item.formats.medium?.url}
               
               />
               </div>
@@ -74,9 +73,9 @@ function  DetailsProject({id}:{id:string}) {
         index={index}
         open={index>=0}
         close={() => setIndex(-1)}
-        slides={project?.images.map((el,i)=>{
+        slides={project?.ProjectImages?.map((el,i)=>{
           const slideImg:SlideImage={
-            src:`/${project.url}${el}`
+            src:`${process.env.NEXT_PUBLIC_HOST+"/dashboard"+el.formats.medium?.url}`
           }
           return slideImg
         } )

@@ -1,9 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { Edu_QLD_Beginner } from "next/font/google";
 import Image from "next/image";
+import { Logo } from '../../types/api/apiTypes'; 
 
 const Lovers = Edu_QLD_Beginner({
   subsets: ["latin"],
@@ -18,6 +19,23 @@ function Navbar() {
   const drawerBtn = () => {
     document.getElementById("my-drawer")?.click();
   };
+
+const [Logo_,setLogo_]=useState<Logo|null>(null)
+
+useEffect(()=>{
+
+      fetch(process.env.NEXT_PUBLIC_HOST+"/dashboard/api/logos?populate=%2A")
+      .then((res) => 
+        res.json())
+      .then((data ) => {
+        const logos=data.data as Logo[];
+        const logoItem=logos.filter((x)=>x.isActive==true)
+        console.log(logoItem[0])
+        setLogo_(logoItem[0])
+      });
+},[])
+
+
   return (
     <div
       id="navbar"
@@ -40,7 +58,7 @@ function Navbar() {
           <Link
            aria-label="Logo"
            className="flex gap-x-2" href="/">
-            <Image src="/LOGOO.png" width={40} height={40} alt="" />
+            <Image src={process.env.NEXT_PUBLIC_HOST+"/dashboard"+Logo_?.Logo?.formats.thumbnail?.url} width={40} height={40} alt="" />
           <h1 className={`${Lovers.className} text-2xl h-[30px] my-auto`}>Yeliz Acar</h1>
           </Link>
         </div>

@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  
+
   poweredByHeader: false,
   async headers() {
     return [{
@@ -12,15 +12,13 @@ const nextConfig: NextConfig = {
         { key: "X-Frame-Options", value: "DENY" },
         { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
         { key: "Permissions-Policy", value: "geolocation=(), microphone=(), camera=()" },
-        {
-          key: "Content-Security-Policy", value:
-            "default-src 'self'; img-src 'self' https: data:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https: data:"
-        },
       ],
-    }];
+    }]
+
   },
   images: {
-        formats: ["image/avif", "image/webp"], // mümkünse AVIF/WEBP servis et
+    formats: ["image/avif", "image/webp"], // mümkünse AVIF/WEBP servis et
+    domains: ['80.253.246.36'], // Bu satırı ekleyin
 
     remotePatterns: [
       {

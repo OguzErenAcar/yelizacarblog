@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Project } from "../../app/utils/projectsModel";
+import { Project } from "../../types/api/apiTypes";
 import { useRef } from "react";
 import Image from "next/image";
 import SkeletonImage from "../img/skeletonImage";
@@ -8,27 +8,31 @@ function Carousel() {
   const [project, setProject] = useState<Project | null>(null);
 
   useEffect(() => {
-    fetch("projects.json")
-      .then((res) => res.json())
+    fetch(process.env.NEXT_PUBLIC_HOST+"/dashboard/api/projects?populate=%2A")
+      .then((res) => 
+        res.json())
       .then((data) => {
-        setProject(data.uploads.user.projects[5]);
+        const projects=data.data as Project[];
+        const projectItem=projects.filter(z=>z.isMain)
+        setProject(projectItem[0]);
       });
   }, []);
   return (
     <div className="relative">
       <div className="carousel w-full h-[calc(100vh)]  ">
         {project &&
-          project.images.map((item, key) => (
+          project.ProjectImages!.map((item, key) => (
             <div key={key} id={`item${key}`} className="carousel-item w-full ">
               <SkeletonImage
-                src={"/" + project.url + item}
+                src={process.env.NEXT_PUBLIC_HOST+"/dashboard" +
+                              item.formats.large?.url || ""}
                 className="object-cover object-center w-full"
               />
               <div className="absolute bottom-0 left-0 h-1/7 w-full bg-gradient-to-t from-black/40"></div>
             </div>
           ))}
       </div>
-      {project && <ButonsGroup index={project.images.length} />}
+      {project && <ButonsGroup index={project.ProjectImages?.length||0} />}
     </div>
   );
 }

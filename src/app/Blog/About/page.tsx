@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../about/about.module.css";
 import { animate, onScroll } from "animejs";
 import { Nunito_Sans } from "next/font/google";
@@ -8,6 +8,9 @@ import "toastify-js/src/toastify.css";
 import Toastify from "toastify-js";
 import Seo from "../../utils/Seo";
 import SkeletonImage from "@/components/img/skeletonImage";
+import { Infos, InfoTimeLine, LinkItem } from "../../../types/api/apiTypes";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const nunito = Nunito_Sans({
   subsets: ["latin"],
@@ -74,6 +77,33 @@ function Page() {
     }).showToast();
   };
 
+  const router = useRouter();
+  const goToLink = (el: string) => {
+window.open(el, "_blank");
+  };
+
+  const [Info, setInfo] = useState<Infos | null>(null);
+
+  useEffect(() => {
+    fetch(process.env.NEXT_PUBLIC_HOST + "/dashboard/api/infos?populate=%2A")
+      .then((res) => res.json())
+      .then((data) => {
+        setInfo(data.data[0]);
+      });
+  }, []);
+
+  const [Links, setLinks] = useState<LinkItem[] | []>([]);
+
+  useEffect(() => {
+    fetch(process.env.NEXT_PUBLIC_HOST + "/dashboard/api/links?populate=%2A")
+      .then((res) => res.json())
+      .then((data) => {
+        const links = data.data as LinkItem[];
+        const activeLinks = links.filter((z) => z.isActive);
+        setLinks(activeLinks);
+      });
+  }, []);
+
   return (
     <>
       <Seo title="About" path="/Blog/About" />
@@ -86,45 +116,42 @@ function Page() {
               <h1
                 className={` ${nunito.className} font-extrabold text-gray-950 text-3xl font-bold mb-4  fade-in-header`}
               >
-                Yeliz Acar
+                {Info?.Header}
               </h1>
               <p
                 className={`${nunito2.className} leading-relaxed text-gray-950 text-3xl mt-10 text-justify fade-in-description`}
               >
-                Yeliz Acar, 2003 yılında İstanbul&apos;da doğmuştur. 2025
-                yılında Bursa Uludağ Üniversitesi Mimarlık bölümünden mezun
-                olmuş bir mimardır.
+                {Info?.Description}
               </p>
-              <div className="w-full flex justify-start gap-x-15 mt-10">
-                <img
+              <div className="w-full flex justify-start gap-x-10 mt-10">
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+                 {Links.sort((a,b)=>a.rowOfNumber-b.rowOfNumber).map((el, i) => (
+                  <div key={i}>
+                   <button  onClick={()=>{
+                    if(el.Name=="CV"){
+                      goToLink(el.LinkUrl);
+                    }else{
+                      copyLink(el.LinkUrl)
+                    }
+                   }}>
+                     <span style={{ color: 'black', fontSize:40 ,cursor:"pointer" }} className="material-symbols-outlined">
+                      {el.FontName}
+                    </span>
+                   </button>
+                  </div>
+                ))} 
+                {/* <img
                   loading="lazy"
-                  onClick={downloadCV}
+                  onClick={() => {
+                    const mail = Links.filter((x) => x.Name == "CV");
+                    goToLink(mail[0].LinkUrl);
+                  }}
                   className="cursor-pointer"
                   src="/fonts/docs_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg"
                   alt="Arrow"
                   width={40}
                   height={40}
-                />
-                <img
-                  onClick={() => {
-                    copyLink("yelzacr4141@.gmail.com");
-                  }}
-                  className="cursor-pointer"
-                  src="/fonts/mail_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg"
-                  alt="Arrow"
-                  width={40}
-                  height={40}
-                />
-                <img
-                  onClick={() => {
-                    copyLink("0551 160 14 94");
-                  }}
-                  className="cursor-pointer"
-                  src="/fonts/phone_in_talk_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg"
-                  alt="Arrow"
-                  width={40}
-                  height={40}
-                />
+                /> */}
               </div>
             </div>
           </div>
@@ -136,7 +163,11 @@ function Page() {
 
           <div className="">
             <Image
-              src='/photo.jpeg'
+              src={
+                process.env.NEXT_PUBLIC_HOST +
+                "/dashboard" +
+                Info?.ProfileImage?.formats.medium?.url
+              }
               width={468}
               height={700}
               alt="Yeliz Acar image"
@@ -151,17 +182,19 @@ function Page() {
 }
 
 function TimeLine() {
-  const arr = [
-    { title: "ŞANTİYE STAJI", desc: "ARTSAM İNŞAAT 2024-AĞUSTOS" },
-    { title: "OFİS STAJI", desc: "EMİRCAN İNŞAAT 2024-TEMMUZ" },
-    { title: "OFİS STAJI", desc: "ENGİN KÜÇÜK MİMARLIK 2023-Temmuz-Ağustos" },
-    {
-      title: "ŞANTİYE STAJI",
-      desc: "BASİT İNŞAAT/ Zafer Şantiyesi 2022-Temmuz-Ağustos",
-    },
-  ];
+  const [InfoTimeLine_, setInfoTimeLine] = useState<InfoTimeLine[]>([]);
+
   useEffect(() => {
-    arr.forEach((el, i) => {
+    fetch(process.env.NEXT_PUBLIC_HOST + "/dashboard/api/info-time-lines")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        console.log(data.data);
+        setInfoTimeLine(data.data);
+      });
+  }, []);
+  useEffect(() => {
+    InfoTimeLine_?.sort((a,b)=>a.rowOfNumber-b.rowOfNumber).forEach((el, i) => {
       animate(".timelineText" + i, {
         translateY: [300, 0],
         opacity: [0, 1],
@@ -172,11 +205,12 @@ function TimeLine() {
         }),
       });
     });
-  }, []);
+  }, [InfoTimeLine_]);
+
   return (
     <section className={styles.designsection}>
       <div className={styles.timeline}>
-        {arr.map((el, i) => (
+        {InfoTimeLine_?.sort((a,b)=>a.rowOfNumber-b.rowOfNumber).map((el, i) => (
           <React.Fragment key={i}>
             {i % 2 === 0 ? timelineTextLeft(i, el) : timelineTextRight(i, el)}
           </React.Fragment>
@@ -186,10 +220,7 @@ function TimeLine() {
   );
 }
 
-function timelineTextRight(
-  i: number,
-  item: { title: string; desc: string }
-): React.ReactNode {
+function timelineTextRight(i: number, item: InfoTimeLine): React.ReactNode {
   return (
     <>
       <div className={`${styles.timelineempty} `}></div>
@@ -199,24 +230,21 @@ function timelineTextRight(
       <div
         className={`timelineText${i} ${styles.timelinecomponent} ${styles.timelinecontent}`}
       >
-        <h3>{item.title}</h3>
-        <p>{item.desc}</p>
+        <h3>{item.Header}</h3>
+        <p>{item.Description}</p>
       </div>
     </>
   );
 }
 
-function timelineTextLeft(
-  i: number,
-  item: { title: string; desc: string }
-): React.ReactNode {
+function timelineTextLeft(i: number, item: InfoTimeLine): React.ReactNode {
   return (
     <>
       <div
         className={`timelineText${i} ${styles.timelinecomponent} ${styles.timelinecontent}`}
       >
-        <h3>{item.title}</h3>
-        <p>{item.desc}</p>
+        <h3>{item.Header}</h3>
+        <p>{item.Description}</p>
       </div>
       <div className={styles.timelinemiddle}>
         <div className={styles.timelinecircle}></div>

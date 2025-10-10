@@ -3,10 +3,10 @@ import ProjectCard from "./projectCard";
 import ProjectText from "./projectText";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { Project } from "@/app/utils/projectsModel";
 import Aos from "aos";
 import { Nunito_Sans } from "next/font/google";
 import { usePathname } from "next/navigation";
+import {  Project } from "../../types/api/apiTypes";
 
 const nunito = Nunito_Sans({
   subsets: ["latin"],
@@ -17,10 +17,10 @@ const nunito = Nunito_Sans({
 function Projects() {
   const [Projects, setProjects] = useState<Project[] | null>([]);
   const pathname = usePathname();
-  const getPath = (key: number): string => {
+  const getPath = (key: string): string => {
     return pathname?.includes("/projects")
-      ? `${pathname}/${key.toString()}`
-      : `${pathname}/projects/${key.toString()}`;
+      ? `${pathname}/${key}`
+      : `${pathname}/projects/${key}`;
   };
 
   useEffect(() => {
@@ -28,10 +28,13 @@ function Projects() {
       duration: 800,
       once: false,
     });
-    fetch("/projects.json")
-      .then((res) => res.json())
+    fetch(process.env.NEXT_PUBLIC_HOST+"/dashboard/api/projects?populate=%2A")
+      .then((res) => 
+        res.json())
       .then((data) => {
-        setProjects(data.uploads.user.projects);
+          const projects=data.data as Project[];
+          const activeProjects=projects.filter(z=>z.isActive)
+          setProjects(activeProjects);
       });
   }, []);
 
@@ -46,22 +49,23 @@ function Projects() {
         <div className="xl:max-w-[1280px] ">
           <div className="w-full justify-center hidden md:flex">
             <div className="min-h-[100vh]">
-              {Projects?.map((item, key) => (
+              {Projects?.sort((a,b)=>a.rowOfNumber-b.rowOfNumber).map((item, key) => (
                 <div key={key}>
                   {key % 2 == 0 && (
                     <div className="flex justify-start mb-20">
-                      <Link 
-                      aria-label="project"
-                      href={getPath(key)}>
+                      <Link aria-label="project" href={getPath(item.documentId)}>
                         <ProjectCard
-                          src={"/" + item.url + item.images[0]}
+                          src={
+                            process.env.NEXT_PUBLIC_HOST+"/dashboard" +
+                              item.ProjectImages![0].formats.medium?.url || ""
+                          }
                           innerWidth={300}
                           className="w-[430px] flex justify-center transition duration-500 ease-in-out transform hover:scale-110"
                         />
                       </Link>
                       <ProjectText
-                        title={item.title}
-                        desc={item.description}
+                        title={item.Title}
+                        desc={item.Description}
                         data_aos="fade-left"
                         className=" slide-right-to-left my-auto w-[390px] select-none text-start"
                       />
@@ -71,16 +75,17 @@ function Projects() {
                   {key % 2 == 1 && (
                     <div className="flex justify-end mb-20">
                       <ProjectText
-                        title={item.title}
-                        desc={item.description}
+                        title={item.Title}
+                        desc={item.Description}
                         data_aos="fade-right"
                         className="my-auto w-[390px] select-none text-end"
                       />
-                      <Link 
-                      aria-label="project"
-                      href={getPath(key)}>
+                      <Link aria-label="project" href={getPath(item.documentId)}>
                         <ProjectCard
-                          src={"/" + item.url + item.images[0]}
+                          src={
+                            process.env.NEXT_PUBLIC_HOST+"/dashboard" +
+                              item.ProjectImages![0].formats.medium?.url || ""
+                          }
                           innerWidth={300}
                           className="w-[430px] flex justify-center transition duration-500 ease-in-out transform hover:scale-110"
                         />
@@ -91,24 +96,25 @@ function Projects() {
               ))}
             </div>
           </div>
-          {Projects?.map((item, key) => (
+          {Projects?.sort((a,b)=>a.rowOfNumber-b.rowOfNumber).map((item, key) => (
             <div
               key={key}
               className="flex flex-col items-center  gap-y-8 md:hidden "
             >
               <>
-                <Link
-                aria-label="project"
-                 href={getPath(key)}>
+                <Link aria-label="project" href={getPath(item.documentId)}>
                   <ProjectCard
-                    src={"/" + item.url + item.images[0]}
+                    src={
+                      process.env.NEXT_PUBLIC_HOST+"/dashboard" +
+                        item.ProjectImages![0].formats.medium?.url || ""
+                    }
                     innerWidth={300}
                     className="w-[350px] flex justify-center transition duration-500 ease-in-out transform hover:scale-110"
                   />
                 </Link>
                 <ProjectText
-                  title={item.title}
-                  desc={item.description}
+                  title={item.Title}
+                  desc={item.Description}
                   data_aos="zoom-in-up"
                   className="my-auto w-[350px] select-none text-justify mb-25"
                 />

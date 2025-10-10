@@ -6,10 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
-
+    "lint": "next lint",
+    "node": "node index.js"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^7.1.0",
+    "@fortawesome/free-brands-svg-icons": "^7.1.0",
+    "@fortawesome/free-regular-svg-icons": "^7.1.0",
+    "@fortawesome/free-solid-svg-icons": "^7.1.0",
+    "@fortawesome/react-fontawesome": "^3.1.0",
     "@fullcalendar/core": "^6.1.18",
     "@fullcalendar/daygrid": "^6.1.18",
     "@fullcalendar/interaction": "^6.1.18",
@@ -22,11 +27,13 @@
     "aos": "^2.3.4",
     "apexcharts": "^5.3.2",
     "clsx": "^2.1.1",
+    "cross-env": "^10.1.0",
     "flatpickr": "^4.6.13",
     "formik": "^2.4.6",
     "next": "15.4.3",
     "next-sitemap": "^4.2.3",
     "next-themes": "^0.4.6",
+    "nodemon": "^3.1.10",
     "postcss": "^8.5.6",
     "react": "19.1.0",
     "react-apexcharts": "^1.7.0",

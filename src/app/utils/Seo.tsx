@@ -34,6 +34,8 @@ export default function Seo({ title, description, path = '' }: SeoProps) {
         <meta property="og:url" content={url} />
         <meta property="og:site_name" content={siteName} />
       <JsonLd data={jsonLd} />
+
+      
       </Head>
     </>
   );
