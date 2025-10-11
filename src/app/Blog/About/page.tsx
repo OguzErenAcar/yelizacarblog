@@ -166,7 +166,7 @@ window.open(el, "_blank");
               src={
                 process.env.NEXT_PUBLIC_HOST +
                 "/dashboard" +
-                Info?.ProfileImage?.formats.medium?.url
+                Info?.ProfileImage?.url
               }
               width={468}
               height={700}

@@ -57,7 +57,7 @@ function Projects() {
                         <ProjectCard
                           src={
                             process.env.NEXT_PUBLIC_HOST+"/dashboard" +
-                              item.ProjectImages![0].formats.medium?.url || ""
+                              (item.ProjectImages ? item.ProjectImages[0].formats.medium?.url : "")
                           }
                           innerWidth={300}
                           className="w-[430px] flex justify-center transition duration-500 ease-in-out transform hover:scale-110"
@@ -84,7 +84,7 @@ function Projects() {
                         <ProjectCard
                           src={
                             process.env.NEXT_PUBLIC_HOST+"/dashboard" +
-                              item.ProjectImages![0].formats.medium?.url || ""
+                              (item.ProjectImages ? item.ProjectImages[0].formats.medium?.url : "")
                           }
                           innerWidth={300}
                           className="w-[430px] flex justify-center transition duration-500 ease-in-out transform hover:scale-110"
@@ -106,7 +106,7 @@ function Projects() {
                   <ProjectCard
                     src={
                       process.env.NEXT_PUBLIC_HOST+"/dashboard" +
-                        item.ProjectImages![0].formats.medium?.url || ""
+                       (item.ProjectImages ? item.ProjectImages[0].formats.medium?.url : "")
                     }
                     innerWidth={300}
                     className="w-[350px] flex justify-center transition duration-500 ease-in-out transform hover:scale-110"
