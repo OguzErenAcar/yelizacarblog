@@ -1,7 +1,7 @@
 // app/sitemap.xml/route.ts
 export const runtime = "edge";
 
-const SITE = "https://yelizacar.vercel.app";
+const SITE = process.env.NEXT_PUBLIC_SITE_URL||"";
 const now = new Date().toISOString();
 
 export async function GET() {
