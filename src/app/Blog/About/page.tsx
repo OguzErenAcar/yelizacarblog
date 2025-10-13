@@ -79,7 +79,7 @@ function Page() {
 
   const router = useRouter();
   const goToLink = (el: string) => {
-window.open(el, "_blank");
+  window.open(el, "_blank");
   };
 
   const [Info, setInfo] = useState<Infos | null>(null);

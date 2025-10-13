@@ -1,18 +1,28 @@
+'use client'
+
 import Link from "next/link";
 import React from "react";
+import { usePathname } from "next/navigation";
 
 function Footer() {
+
+  const pathName=usePathname();
+
+  const setPath=(path:string):string=>{
+    return pathName?.includes("blog/") ? `${path}`: `blog/${path}`
+  }
+
   return (
     <div>
       <footer className="w-full h-50 footer footer-horizontal footer-center bg-base-200 text-base-content rounded p-10">
         <nav className="grid grid-flow-col gap-4 ">
-          <Link aria-label="About" href="/About" className="link link-hover">
+          <Link aria-label="About" href={setPath("about")} className="link link-hover">
             About{" "}
           </Link>
-          <Link aria-label="Projects" href="/Projects" className="link link-hover">
+          <Link aria-label="Projects" href={setPath("projects")} className="link link-hover">
             Projects
           </Link>
-          <Link aria-label="Contact" href="/Contact" className="link link-hover">
+          <Link aria-label="Contact" href={setPath("contact")} className="link link-hover">
             Contact
           </Link>
         </nav>

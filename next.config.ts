@@ -18,7 +18,7 @@ const nextConfig: NextConfig = {
   },
   images: {
     formats: ["image/avif", "image/webp"], // mümkünse AVIF/WEBP servis et
-    domains: ['80.253.246.36'], // Bu satırı ekleyin
+    domains: ['yelizacar.com.tr'], // Bu satırı ekleyin
 
     remotePatterns: [
       {

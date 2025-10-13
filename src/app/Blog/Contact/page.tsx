@@ -12,15 +12,15 @@ function Page() {
       <div className="flex justify-between gap-x-10 w-[80%]">
         <div className="mt-4 flex flex-col bg-neutral-500 rounded-lg p-4 ">
           <h2 className="text-white font-bold text-2xl">
-            AI Story Maker Dream Form
+          İletişime Geçin
           </h2>
 
           <div className="mt-4">
             <label className="text-white" htmlFor="title">
-              Title
+              Başlık
             </label>
             <input
-              placeholder="Enter a title for your dream"
+              placeholder="Konu Başlığı"
               className="w-full bg-neutral-300 rounded-md border-gray-700 text-black px-2 py-1"
               type="text"
             />
@@ -28,11 +28,11 @@ function Page() {
 
           <div className="mt-4">
             <label className="text-white" htmlFor="description">
-              Description
+              Açıklama
             </label>
             <textarea
-              placeholder="Describe your dream in detail"
-              className="w-full bg-neutral-300 rounded-md border-gray-700 text-black  px-2 py-1"
+              placeholder="Fikir görüş ve tekliflerinizi benimle paylaşabilirsiniz."
+              className="w-full h-80 bg-neutral-300 rounded-md border-gray-700 text-black  px-2 py-1"
               id="description"
             ></textarea>
           </div>
@@ -40,10 +40,10 @@ function Page() {
           <div className="mt-4 flex flex-row space-x-2">
             <div className="flex-1">
               <label className="text-white" htmlFor="emotions">
-                Emotions
+                Email
               </label>
               <input
-                placeholder="What emotions did you feel during your dream?"
+                placeholder=""
                 className="w-full bg-neutral-300 rounded-md border-gray-700 text-black  px-2 py-1"
                 id="emotions"
                 type="text"
@@ -52,26 +52,12 @@ function Page() {
 
             <div className="flex-1">
               <label className="text-white" htmlFor="symbols">
-                Symbols
+                Telefon
               </label>
               <input
-                placeholder="Did you see any symbols in your dream?"
+                placeholder=""
                 className="w-full bg-neutral-300 rounded-md border-gray-700 text-black  px-2 py-1"
                 id="symbols"
-                type="text"
-              />
-            </div>
-          </div>
-
-          <div className="mt-4 flex flex-row space-x-2">
-            <div className="flex-1">
-              <label className="text-white" htmlFor="themes">
-                Themes
-              </label>
-              <input
-                placeholder="What themes do you think your dream might be about?"
-                className="w-full bg-neutral-300rounded-md border-gray-700 text-white px-2 py-1"
-                id="themes"
                 type="text"
               />
             </div>
@@ -83,17 +69,10 @@ function Page() {
               id="generate-button"
               type="button"
             >
-              Generate
+              Gönder
             </button>
           </div>
 
-          <div className="mt-4">
-            <textarea
-              placeholder="Your AI-generated story will appear here"
-              className="w-full bg-neutral-300 rounded-md border-gray-700 text-black px-2 py-1 h-48"
-              id="story-output"
-            ></textarea>
-          </div>
         </div>
           <div className="  items-center mx-end hidden xl:flex">
             <Image width={500} height={500} alt="" src="/fonts/undraw_profile-data_xkr9.svg" />

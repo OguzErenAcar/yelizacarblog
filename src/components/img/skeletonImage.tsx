@@ -44,7 +44,8 @@ function SkeletonImage({ className, src, alt, width, height,skeletonHeight }: Im
         src={src}
         className={` ${className}`}
         quality={80}
-        priority  
+        placeholder="empty" 
+        priority 
       /> 
     </div>
   );
