@@ -7,7 +7,6 @@ function Page() {
 
   return (
     <>
-      <Seo title="Contact" path="/Blog/Contact" />
       <div className="flex justify-center w-full">
       <div className="flex justify-between gap-x-10 w-[80%]">
         <div className="mt-4 flex flex-col bg-neutral-500 rounded-lg p-4 ">

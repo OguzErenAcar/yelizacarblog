@@ -5,7 +5,6 @@ import Footer from "@/components/blog/footer";
 import { StoreProvider } from "@/store/storeProvider";
 import Link from "next/link";
 import ResizeProvider from "../utils/resizeProvider";
-
 import "aos/dist/aos.css";
 import "react-image-gallery/styles/css/image-gallery.css";
 import "yet-another-react-lightbox/styles.css";
@@ -13,10 +12,27 @@ import "react-loading-skeleton/dist/skeleton.css";
 
 import { Nunito_Sans } from "next/font/google";
 import LoadingGate from "../utils/loadingGate";
+import { generateSeoMetadata } from "../../app/utils/seoMetaData";
+import JsonLd from "@/app/utils/JsonLd";
 
-const siteName = process.env.NEXT_PUBLIC_SITE_NAME || "Architect Yeliz Acar Blog";
-const siteDescription = process.env.NEXT_PUBLIC_SITE_DESCRIPTION || "";
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "";
+const title ="YELİZ ACAR";
+const description= "YELİZ ACAR , Mimar projeleri ve bilgileri. iletişime geçin, projelerine göz atın, mimarlık, mezun";
+const path= "/Blog";
+
+export const metadata = generateSeoMetadata({
+  title:title,
+  description:description,
+  path: path
+}); 
+
+const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: title,
+    description: description,
+    url: `https://yelizacar.com.tr${path}`,
+
+};
 
 const nunito = Nunito_Sans({
   subsets: ["latin"],
@@ -34,20 +50,8 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: siteName,
-    template: `%s | ${siteName}`,
-  },
-  description: siteDescription,
-  openGraph: {
-    type: "website",
-    title: siteName,
-    description: siteDescription,
-    url: siteUrl,
-    siteName: siteName,
-  },
-};
+
+
 
 export default function Blog({
   children,
@@ -55,18 +59,22 @@ export default function Blog({
   children: React.ReactNode;
 }>) {
   return ( 
-        <StoreProvider>
+    <main>
+      <link rel="icon" href={process.env.NEXT_PUBLIC_TITTLE_ICON} />
+     {/* <JsonLd data={jsonLd} />  */}
+      <StoreProvider>
            <Drawer>
           <Navbar />
             <ResizeProvider>
               <LoadingGate>
-
              {children}
               </LoadingGate>
             </ResizeProvider>
             <Footer /> 
           </Drawer> 
         </StoreProvider>
+    </main>
+  
   );
 }
 

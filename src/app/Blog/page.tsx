@@ -20,7 +20,6 @@ function Page() {
   }, []);
   return (
     <>
-      <Seo title="Home" path="/blog" />
       <div>
         <div>
           <Carousel />

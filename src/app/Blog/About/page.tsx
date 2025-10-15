@@ -1,4 +1,4 @@
-"use client";
+'use client'
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import styles from "../about/about.module.css";
@@ -10,7 +10,8 @@ import Seo from "../../utils/Seo";
 import SkeletonImage from "@/components/img/skeletonImage";
 import { Infos, InfoTimeLine, LinkItem } from "../../../types/api/apiTypes";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
+ 
+
 
 const nunito = Nunito_Sans({
   subsets: ["latin"],
@@ -105,8 +106,7 @@ function Page() {
   }, []);
 
   return (
-    <>
-      <Seo title="About" path="/Blog/About" />
+    <> 
       <div className="flex justify-center mt-10 ">
         <div className="flex justify-around w-full items-center xl:flex-row xl:gap-0 gap-4 flex-col-reverse">
           <div className="mt-10 lg:mt-0">
