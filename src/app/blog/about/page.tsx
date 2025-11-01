@@ -1,7 +1,7 @@
 'use client'
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import styles from "../about/about.module.css";
+import styles from "../about.module.css";
 import { animate, onScroll } from "animejs";
 import { Nunito_Sans } from "next/font/google";
 import "toastify-js/src/toastify.css";
