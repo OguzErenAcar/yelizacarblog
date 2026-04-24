@@ -86,7 +86,7 @@ function Page() {
   const [Info, setInfo] = useState<Infos | null>(null);
 
   useEffect(() => {
-    fetch(process.env.NEXT_PUBLIC_HOST + "/dashboard/api/infos?populate=%2A")
+    fetch(process.env.NEXT_PUBLIC_STRAPI_BASE+"/api/infos?populate=%2A")
       .then((res) => res.json())
       .then((data) => {
         setInfo(data.data[0]);
