@@ -83,7 +83,7 @@ function Drawer({ children }: { children?: React.ReactNode }) {
           className="drawer-overlay"
         ></label>
         <ul
-          className={`${nunito.className} text-lg menu bg-base-200 text-base-content min-h-full w-80 p-4`}
+          className={`${nunitoSans.className} text-lg menu bg-base-200 text-base-content min-h-full w-80 p-4`}
         >
           <li>
             <Link aria-label="Blog" href="/blog">Home</Link>
