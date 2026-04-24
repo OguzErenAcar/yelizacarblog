@@ -22,10 +22,10 @@ function Carousel() {
       <div className="carousel w-full h-[calc(100vh)]  ">
         {project &&
           project.ProjectImages!.map((item, key) => (
-            <div key={key} id={`item${key}`} className="carousel-item w-full ">
+            <div key={key} id={`item${key}`} className="carousel-item w-full h-full">
               <SkeletonImage
                 src={process.env.NEXT_PUBLIC_STRAPI_BASE + (item.url || "")}
-                className="object-cover object-center w-full"
+                className="object-cover object-center w-full h-full"
               />
               <div className="absolute bottom-0 left-0 h-1/7 w-full bg-gradient-to-t from-black/40"></div>
             </div>
