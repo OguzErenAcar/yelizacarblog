@@ -3,7 +3,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import styles from "./about.module.css";
 import { animate, onScroll } from "animejs";
-import { Nunito_Sans } from "next/font/google";
+import { nunitoSans } from "@/app/fonts";
 import "toastify-js/src/toastify.css";
 import Toastify from "toastify-js";
 import Seo from "../../utils/Seo";
