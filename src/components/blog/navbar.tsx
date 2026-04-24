@@ -66,7 +66,7 @@ function Navbar() {
               alt=""
 
             />
-            <h1 className={`${Lovers.className} text-2xl h-[30px] my-auto`}>
+            <h1 className={`${eduQLDBeginner.className} text-2xl h-[30px] my-auto`}>
               Yeliz Acar
             </h1>
           </Link>
