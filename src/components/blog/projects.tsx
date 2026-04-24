@@ -105,8 +105,8 @@ function Projects() {
                 <Link aria-label="project" href={getPath(item.documentId)}>
                   <ProjectCard
                     src={
-                      process.env.NEXT_PUBLIC_HOST+"/dashboard" +
-                       (item.ProjectImages ? item.ProjectImages[0].formats.medium?.url : "")
+                      process.env.NEXT_PUBLIC_STRAPI_BASE +
+                       (item.ProjectImages ? (item.ProjectImages[0].formats.medium?.url || item.ProjectImages[0].url) : "")
                     }
                     innerWidth={300}
                     className="w-[350px] flex justify-center transition duration-500 ease-in-out transform hover:scale-110"
