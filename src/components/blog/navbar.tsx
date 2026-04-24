@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { Edu_QLD_Beginner } from "next/font/google";
+import { eduQLDBeginner } from "@/app/fonts";
 import Image from "next/image";
 import { Logo } from "../../types/api/apiTypes";
 import SkeletonImage from "../img/skeletonImage";
