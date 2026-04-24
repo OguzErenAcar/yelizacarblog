@@ -104,7 +104,7 @@ function Page() {
             {/* text */}
             <div className={`mx-auto text-start lg:w-[600px] lg:px-0 px-4 `}>
               <h1
-                className={` ${nunito.className} font-extrabold text-gray-950 text-3xl font-bold mb-4  fade-in-header`}
+                className={` ${nunitoSans.className} font-extrabold text-gray-950 text-3xl font-bold mb-4  fade-in-header`}
               >
                 {Info?.Header}
               </h1>
