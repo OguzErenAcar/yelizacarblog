@@ -33,7 +33,7 @@ function  DetailsProject({id}:{id:string}) {
     <div> 
       <div className=" h-[calc(100vh-80px)]">
       { project&& <SkeletonImage
-          src={process.env.NEXT_PUBLIC_HOST+"/dashboard"+project.ProjectImages![0].url}
+          src={process.env.NEXT_PUBLIC_STRAPI_BASE+project.ProjectImages![0].url}
           alt="project details"
           className="w-full  h-full object-cover object-center"
         />}
