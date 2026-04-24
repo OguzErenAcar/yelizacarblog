@@ -2,7 +2,7 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Lightbox, { SlideImage } from "yet-another-react-lightbox";
-import { Nunito_Sans } from 'next/font/google';
+import { nunitoSans } from "@/app/fonts";
 import Skeleton from "react-loading-skeleton";
 import SkeletonImage from "@/components/img/skeletonImage";
 import {  Project } from "../../../../types/api/apiTypes";
