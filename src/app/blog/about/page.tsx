@@ -161,18 +161,17 @@ function Page() {
             </div>
           </div> */}
 
-          <div className="">
-            <Image
-              src={
-                process.env.NEXT_PUBLIC_STRAPI_BASE +
-                (Info?.ProfileImage?.url || "")
-              }
-              width={468}
-              height={700}
-              alt="Yeliz Acar image"
-              className="block mx-auto"
-            />
-          </div>
+          {Info?.ProfileImage?.url && (
+            <div className="">
+              <Image
+                src={process.env.NEXT_PUBLIC_STRAPI_BASE + Info.ProfileImage.url}
+                width={468}
+                height={700}
+                alt="Yeliz Acar image"
+                className="block mx-auto"
+              />
+            </div>
+          )}
         </div>
       </div>
       {TimeLine()}
