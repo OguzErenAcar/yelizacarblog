@@ -4,7 +4,7 @@ import ProjectText from "./projectText";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Aos from "aos";
-import { Nunito_Sans } from "next/font/google";
+import { nunitoSans } from "@/app/fonts";
 import { usePathname } from "next/navigation";
 import {  Project } from "../../types/api/apiTypes";
 
