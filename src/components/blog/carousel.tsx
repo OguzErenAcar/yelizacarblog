@@ -8,7 +8,7 @@ function Carousel() {
   const [project, setProject] = useState<Project | null>(null);
 
   useEffect(() => {
-    fetch(process.env.NEXT_PUBLIC_HOST+"/dashboard/api/projects?populate=%2A")
+    fetch(process.env.NEXT_PUBLIC_STRAPI_BASE+"/api/projects?populate=%2A")
       .then((res) => 
         res.json())
       .then((data) => {
