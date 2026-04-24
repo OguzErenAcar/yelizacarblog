@@ -61,7 +61,7 @@ function  DetailsProject({id}:{id:string}) {
                 height={170}
                 alt=""
                 className="rounded-md"
-                src={process.env.NEXT_PUBLIC_HOST+"/dashboard"+item.formats.medium?.url}
+                src={process.env.NEXT_PUBLIC_STRAPI_BASE+(item.formats.medium?.url || item.url)}
               
               />
               </div>
