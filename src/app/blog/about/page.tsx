@@ -13,16 +13,6 @@ import { useRouter } from "next/navigation";
  
 
 
-const nunito = Nunito_Sans({
-  subsets: ["latin"],
-  weight: ["700"], // sadece regular
-  display: "swap",
-});
-const nunito2 = Nunito_Sans({
-  subsets: ["latin"],
-  weight: ["500"], // sadece regular
-  display: "swap",
-});
 function Page() {
   useEffect(() => {
     animate(".fade-in-header", {
