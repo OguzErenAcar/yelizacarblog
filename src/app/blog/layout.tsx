@@ -9,7 +9,7 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import "yet-another-react-lightbox/styles.css";
 import "react-loading-skeleton/dist/skeleton.css";
 
-import { Nunito_Sans } from "next/font/google";
+import { nunitoSans } from "@/app/fonts";
 import LoadingGate from "../utils/loadingGate";
 import { generateSeoMetadata } from "../../app/utils/seoMetaData";
 import JsonLd from "@/app/utils/JsonLd";
