@@ -33,11 +33,6 @@ const jsonLd = {
 
 };
 
-const nunito = Nunito_Sans({
-  subsets: ["latin"],
-  weight: ["400"], // sadece regular
-  display: "swap",
-});
 
 
 
