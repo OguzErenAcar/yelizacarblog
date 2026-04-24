@@ -42,22 +42,24 @@ export default function LoadingGate({
       ) : (
         <div className=" h-screen flex items-center justify-center bg-white">
           <div className="myloader">
-            <Image
-              style={{
-                visibility: loaded ? "visible" : "hidden",
-                transition: "visibility 0s, opacity 0.3s ease",
-                opacity: loaded ? 1 : 0,
-              }}
-              onLoad={() => setLoaded(true)}
-              src={
-                process.env.NEXT_PUBLIC_STRAPI_BASE +
-                (Logo_?.Logo?.formats.thumbnail?.url || Logo_?.Logo?.url || "")
-              }
-              width={148}
-              height={148}
-              alt=""
-              className="logo-flip"
-            />
+            {Logo_?.Logo && (
+              <Image
+                style={{
+                  visibility: loaded ? "visible" : "hidden",
+                  transition: "visibility 0s, opacity 0.3s ease",
+                  opacity: loaded ? 1 : 0,
+                }}
+                onLoad={() => setLoaded(true)}
+                src={
+                  process.env.NEXT_PUBLIC_STRAPI_BASE +
+                  (Logo_.Logo.formats.thumbnail?.url || Logo_.Logo.url)
+                }
+                width={148}
+                height={148}
+                alt=""
+                className="logo-flip"
+              />
+            )}
           </div>
         </div>
       )}
