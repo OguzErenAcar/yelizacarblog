@@ -50,22 +50,23 @@ function Navbar() {
       <div className="relative flex items-center justify-between h-full  z-0">
         <div className=" ms-5">
           <Link aria-label="Logo" className="flex gap-x-2" href="/">
-            <Image
-              style={{
-                visibility: loaded ? "visible" : "hidden",
-                transition: "visibility 0s, opacity 0.3s ease",
-                opacity: loaded ? 1 : 0,
-              }}
-              onLoad={() => setLoaded(true)}
-              src={
-                process.env.NEXT_PUBLIC_STRAPI_BASE +
-                (Logo_?.Logo?.formats.thumbnail?.url || Logo_?.Logo?.url || "")
-              }
-              width={40}
-              height={40}
-              alt=""
-
-            />
+            {Logo_?.Logo && (
+              <Image
+                style={{
+                  visibility: loaded ? "visible" : "hidden",
+                  transition: "visibility 0s, opacity 0.3s ease",
+                  opacity: loaded ? 1 : 0,
+                }}
+                onLoad={() => setLoaded(true)}
+                src={
+                  process.env.NEXT_PUBLIC_STRAPI_BASE +
+                  (Logo_.Logo.formats.thumbnail?.url || Logo_.Logo.url)
+                }
+                width={40}
+                height={40}
+                alt=""
+              />
+            )}
             <h1 className={`${eduQLDBeginner.className} text-2xl h-[30px] my-auto`}>
               Yeliz Acar
             </h1>
