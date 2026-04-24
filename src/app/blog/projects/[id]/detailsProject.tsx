@@ -7,11 +7,6 @@ import Skeleton from "react-loading-skeleton";
 import SkeletonImage from "@/components/img/skeletonImage";
 import {  Project } from "../../../../types/api/apiTypes";
 
-const nunito = Nunito_Sans({
-  subsets: ['latin'],
-  weight: ['400'],      
-  display: 'swap',
-});
 
 function  DetailsProject({id}:{id:string}) {
    const [index, setIndex] = useState(-1);
