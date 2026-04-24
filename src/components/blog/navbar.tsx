@@ -7,11 +7,6 @@ import Image from "next/image";
 import { Logo } from "../../types/api/apiTypes";
 import SkeletonImage from "../img/skeletonImage";
 
-const Lovers = Edu_QLD_Beginner({
-  subsets: ["latin"],
-  weight: ["400"], // sadece regular
-  display: "swap",
-});
 
 function Navbar() {
   const [isHovered, setIsHovered] = useState(false);
