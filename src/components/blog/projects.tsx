@@ -28,7 +28,7 @@ function Projects() {
       duration: 800,
       once: false,
     });
-    fetch(process.env.NEXT_PUBLIC_HOST+"/dashboard/api/projects?populate=%2A")
+    fetch(process.env.NEXT_PUBLIC_STRAPI_BASE+"/api/projects?populate=%2A")
       .then((res) => 
         res.json())
       .then((data) => {
