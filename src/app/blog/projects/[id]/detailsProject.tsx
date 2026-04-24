@@ -75,7 +75,7 @@ function  DetailsProject({id}:{id:string}) {
         close={() => setIndex(-1)}
         slides={project?.ProjectImages?.map((el,i)=>{
           const slideImg:SlideImage={
-            src:`${process.env.NEXT_PUBLIC_HOST+"/dashboard"+el.url}`
+            src:`${process.env.NEXT_PUBLIC_STRAPI_BASE+el.url}`
           }
           return slideImg
         } )
