@@ -50,7 +50,7 @@ function Navbar() {
       <div className="relative flex items-center justify-between h-full  z-0">
         <div className=" ms-5">
           <Link aria-label="Logo" className="flex gap-x-2" href="/">
-            {Logo_?.Logo && (
+            {(Logo_?.Logo?.formats.thumbnail?.url || Logo_?.Logo?.url) && (
               <Image
                 style={{
                   visibility: loaded ? "visible" : "hidden",
@@ -60,7 +60,7 @@ function Navbar() {
                 onLoad={() => setLoaded(true)}
                 src={
                   process.env.NEXT_PUBLIC_STRAPI_BASE +
-                  (Logo_.Logo.formats.thumbnail?.url || Logo_.Logo.url)
+                  (Logo_!.Logo!.formats.thumbnail?.url || Logo_!.Logo!.url)
                 }
                 width={40}
                 height={40}
