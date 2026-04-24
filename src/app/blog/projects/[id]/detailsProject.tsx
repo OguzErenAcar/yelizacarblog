@@ -20,7 +20,7 @@ function  DetailsProject({id}:{id:string}) {
 
 
     useEffect(() => {
-      fetch(process.env.NEXT_PUBLIC_HOST+"/dashboard/api/projects/"+id+"?populate=%2A")
+      fetch(process.env.NEXT_PUBLIC_STRAPI_BASE+"/api/projects/"+id+"?populate=%2A")
         .then((res) => res.json())
         .then((data) => {
          const project=data.data as Project;
