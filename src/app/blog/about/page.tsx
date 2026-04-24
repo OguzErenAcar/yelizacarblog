@@ -109,7 +109,7 @@ function Page() {
                 {Info?.Header}
               </h1>
               <p
-                className={`${nunito2.className} leading-relaxed text-gray-950 text-3xl mt-10 text-justify fade-in-description`}
+                className={`${nunitoSans.className} font-medium leading-relaxed text-gray-950 text-3xl mt-10 text-justify fade-in-description`}
               >
                 {Info?.Description}
               </p>
