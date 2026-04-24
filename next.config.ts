@@ -28,6 +28,10 @@ const nextConfig: NextConfig = {
         hostname: 'localhost',
         port: '1337',
       },
+      {
+        protocol: 'http',
+        hostname: '45.141.151.194',
+      },
     ],
   },
 
