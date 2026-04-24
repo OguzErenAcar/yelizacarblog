@@ -164,9 +164,8 @@ function Page() {
           <div className="">
             <Image
               src={
-                process.env.NEXT_PUBLIC_HOST +
-                "/dashboard" +
-                Info?.ProfileImage?.url
+                process.env.NEXT_PUBLIC_STRAPI_BASE +
+                (Info?.ProfileImage?.url || "")
               }
               width={468}
               height={700}
