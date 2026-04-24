@@ -24,8 +24,7 @@ function Carousel() {
           project.ProjectImages!.map((item, key) => (
             <div key={key} id={`item${key}`} className="carousel-item w-full ">
               <SkeletonImage
-                src={process.env.NEXT_PUBLIC_HOST+"/dashboard" +
-                              item.url || ""}
+                src={process.env.NEXT_PUBLIC_STRAPI_BASE + (item.url || "")}
                 className="object-cover object-center w-full"
               />
               <div className="absolute bottom-0 left-0 h-1/7 w-full bg-gradient-to-t from-black/40"></div>
