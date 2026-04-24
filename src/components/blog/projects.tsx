@@ -8,11 +8,6 @@ import { nunitoSans } from "@/app/fonts";
 import { usePathname } from "next/navigation";
 import {  Project } from "../../types/api/apiTypes";
 
-const nunito = Nunito_Sans({
-  subsets: ["latin"],
-  weight: ["400"], // sadece regular
-  display: "swap",
-});
 
 function Projects() {
   const [Projects, setProjects] = useState<Project[] | null>([]);
