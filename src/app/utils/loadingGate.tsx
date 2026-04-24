@@ -26,7 +26,7 @@ export default function LoadingGate({
   const [Logo_, setLogo_] = useState<Logo | null>(null);
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
-    fetch(process.env.NEXT_PUBLIC_HOST + "/dashboard/api/logos?populate=%2A")
+    fetch(process.env.NEXT_PUBLIC_STRAPI_BASE+"/api/logos?populate=%2A")
       .then((res) => res.json())
       .then((data) => {
         const logos = data.data as Logo[];
