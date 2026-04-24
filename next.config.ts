@@ -32,6 +32,10 @@ const nextConfig: NextConfig = {
         protocol: 'http',
         hostname: '45.141.151.194',
       },
+      {
+        protocol: 'http',
+        hostname: 'yelizacar.com.tr',
+      },
     ],
   },
 
