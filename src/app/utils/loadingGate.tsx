@@ -50,9 +50,8 @@ export default function LoadingGate({
               }}
               onLoad={() => setLoaded(true)}
               src={
-                process.env.NEXT_PUBLIC_HOST +
-                "/dashboard" +
-                Logo_?.Logo?.formats.thumbnail?.url
+                process.env.NEXT_PUBLIC_STRAPI_BASE +
+                (Logo_?.Logo?.formats.thumbnail?.url || Logo_?.Logo?.url || "")
               }
               width={148}
               height={148}
