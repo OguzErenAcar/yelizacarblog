@@ -17,13 +17,16 @@ const nextConfig: NextConfig = {
 
   },
   images: {
-    formats: ["image/avif", "image/webp"], // mümkünse AVIF/WEBP servis et
-    domains: ['yelizacar.com.tr'], // Bu satırı ekleyin
-
+    formats: ["image/avif", "image/webp"],
     remotePatterns: [
       {
         protocol: 'https',
         hostname: '**',
+      },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '1337',
       },
     ],
   },
