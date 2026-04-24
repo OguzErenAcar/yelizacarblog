@@ -36,7 +36,7 @@ function Projects() {
   return (
     <div>
       <h1
-        className={`${nunito.className} text-center text-black text-5xl my-20`}
+        className={`${nunitoSans.className} text-center text-black text-5xl my-20`}
       >
         PROJECTS
       </h1>
