@@ -96,7 +96,7 @@ function Page() {
   const [Links, setLinks] = useState<LinkItem[] | []>([]);
 
   useEffect(() => {
-    fetch(process.env.NEXT_PUBLIC_HOST + "/dashboard/api/links?populate=%2A")
+    fetch(process.env.NEXT_PUBLIC_STRAPI_BASE+"/api/links?populate=%2A")
       .then((res) => res.json())
       .then((data) => {
         const links = data.data as LinkItem[];
