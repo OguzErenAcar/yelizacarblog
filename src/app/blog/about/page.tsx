@@ -184,7 +184,7 @@ function TimeLine() {
   const [InfoTimeLine_, setInfoTimeLine] = useState<InfoTimeLine[]>([]);
 
   useEffect(() => {
-    fetch(process.env.NEXT_PUBLIC_HOST + "/dashboard/api/info-time-lines")
+    fetch(process.env.NEXT_PUBLIC_STRAPI_BASE+"/api/info-time-lines")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
