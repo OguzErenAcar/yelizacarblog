@@ -33,9 +33,9 @@ function  DetailsProject({id}:{id:string}) {
           className="w-full  h-full object-cover object-center"
         />}
       </div> 
-      <div className={`${nunito.className} text-xl max-w-2xl mx-auto px-4 mt-20 my-[100px] leading-[40px]`}>
+      <div className={`${nunitoSans.className} text-xl max-w-2xl mx-auto px-4 mt-20 my-[100px] leading-[40px]`}>
         <h2 className={`text-black text-center  font-black text-2xl font-bold mb-4 `}>{project?.Title||<Skeleton/>}</h2>
-        <p className={`${nunito.className} text-black text-md text-justify mt-15`}>
+        <p className={`${nunitoSans.className} text-black text-md text-justify mt-15`}>
           {project?.Description ||<Skeleton/>}
         </p>
       </div>
